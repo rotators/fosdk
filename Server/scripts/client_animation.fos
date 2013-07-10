@@ -1,0 +1,32 @@
+#ifndef __CLIENT_ANIMATION__
+#define __CLIENT_ANIMATION__
+
+string@ critter_animation( int animType, uint crType, uint anim1, uint anim2, uint& pass, uint& flags, int& ox, int& oy ) // reserved
+{
+    return( null );
+}
+
+bool critter_animation_fallout( uint crType, uint& anim1, uint& anim2, uint& anim1ex, uint& anim2ex, uint& flags ) // reserved
+{
+    return( true );
+}
+
+bool critter_animation_substitute( int animType, uint crBaseType, uint anim1base, uint anim2base, uint& crType, uint& anim1, uint& anim2 ) // reserved
+{
+    return( true );
+}
+
+
+#ifndef __MAPPER
+
+void animation2d_process( bool animateStay, CritterCl& cr, uint anim1, uint anim2, ItemCl@ item ) // reserved
+{
+}
+
+void animation3d_process( bool animateStay, CritterCl& cr, uint anim1, uint anim2, ItemCl@ item ) // reserved
+{
+}
+
+#endif // !__MAPPER
+
+#endif // __CLIENT_ANIMATION__ //

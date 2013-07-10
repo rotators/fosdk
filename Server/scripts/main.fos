@@ -1,0 +1,186 @@
+#ifndef __MAIN__
+#define __MAIN__
+
+void init() // reserved
+{
+    Log( "INIT" );
+}
+
+bool start() // reserved
+{
+    return( true );
+}
+
+void get_start_time( uint16& multipler, uint16& year, uint16& month, uint16& day, uint16& hour, uint16& minute ) // reserved
+{
+}
+
+void finish() // reserved
+{
+}
+
+uint loop() // reserved
+{
+    return( 10 );
+}
+
+void global_process(int,Critter&,Item@,float&,float&,float&,float&,float&,uint&,bool&) // reserved
+{
+}
+
+void global_invite (Critter&,Item@,uint,int,uint&,uint16&,uint16&,uint8&) // reserved
+{
+}
+
+void critter_attack( Critter& cr, Critter& target, ProtoItem& weapon, uint8 weaponMode, ProtoItem@ ammo ) // reserved
+{
+}
+
+void critter_attacked( Critter& cr, Critter& attacker ) // reserved
+{
+}
+
+bool critter_stealing( Critter& cr, Critter& thief, Item& item, uint count ) // reserved
+{
+    return( true );
+}
+
+bool critter_use_item( Critter& cr, Item& item, Critter@ targetCr, Item@ targetItem, Scenery@ targetScenery, uint param ) // reserved
+{
+    return( true );
+}
+
+bool critter_use_skill( Critter& cr, int skill, Critter@ targetCr, Item@ targetItem, Scenery@ targetScenery ) // reserved
+{
+    return( true );
+}
+
+void critter_reload_weapon( Critter& cr, Item& weapon, Item@ ammo ) // reserved
+{
+}
+
+void critter_init( Critter& cr, bool firstTime ) // reserved
+{
+}
+
+void critter_finish( Critter& cr, bool toDelete ) // reserved
+{
+}
+
+void critter_idle( Critter& cr ) // reserved
+{
+}
+
+void critter_dead( Critter& cr, Critter@ killer ) // reserved
+{
+}
+
+void critter_respawn( Critter& cr ) // reserved
+{
+}
+
+bool critter_check_move_item( Critter& cr, Item& item, uint8 toSlot, Item@ itemSwap ) // reserved
+{
+    return( true );
+}
+
+void critter_move_item(Critter&,Item&,uint8) // reserved
+{
+}
+
+void map_critter_in( Map& map, Critter& cr ) // reserved
+{
+}
+
+void map_critter_out( Map& map, Critter& cr ) // reserved
+{
+}
+
+bool npc_plane_begin( Critter& cr,NpcPlane& plane, int reason, Critter@ someCr, Item@ someItem ) // reserved
+{
+    return( true );
+}
+
+bool npc_plane_end( Critter& cr, NpcPlane& plane, int reason, Critter@ someCr, Item@ someItem ) // reserved
+{
+    return( true );
+}
+
+bool npc_plane_run( Critter& cr, NpcPlane& plane, int reason, uint& r0, uint& r1, uint& r2 ) // reserved
+{
+    return( true );
+}
+
+void karma_voting( Critter& crFrom, Critter& crTo, bool valUp ) // reserved
+{
+}
+
+bool check_look( Map& map, Critter& cr, Critter& opponent ) // reserved
+{
+    return( true );
+}
+
+uint item_cost( Item& item, Critter& cr, Critter& trader, bool sell ) // reserved
+{
+    return( 1 );
+}
+
+bool items_barter( array<Item@>& saleItems, array<uint>& saleItemsCount, array<Item@>& buyItems, array<uint>& buyItemsCount, Critter& cr, Critter& trader ) // reserved
+{
+    return( true );
+}
+
+void items_crafted( array<Item@>& items, array<uint>& itemsCount, array<Item@>& resources, Critter& cr ) // reserved
+{
+}
+
+void player_levelup( Critter& cr, uint skillIdx, uint skillUp, uint perkIdx ) // reserved
+{
+}
+
+void turn_based_begin( Map& map ) // reserved
+{
+}
+
+void turn_based_end( Map& map ) // reserved
+{
+}
+
+void turn_based_process(Map& map, Critter& cr, bool beginTurn ) // reserved
+{
+}
+
+void turn_based_sequence( Map& map, array<Critter@>& critters, Critter@ firstTurnCr ) // reserved
+{
+}
+
+void world_save( uint idx, array<uint>& deleteIdx ) // reserved
+{
+}
+
+bool player_registration( uint ip, string& name, uint& textMsg, uint& strNum ) // reserved
+{
+    return( true );
+}
+
+bool player_login( uint ip, string& name, uint id, uint& textMsg, uint& strNum ) // reserved
+{
+    return( true );
+}
+
+bool player_getaccess( Critter& cr, int access, string& password ) // reserved
+{
+    return( true );
+}
+
+bool player_allowcommand( Critter@ cr, string@ adminUser, uint8 command ) // reserved
+{
+    return( true );
+}
+
+bool check_trap_look( Map& map, Critter& cr,Item& trap ) // reserved
+{
+    return( true );
+}
+
+#endif /* __MAIN__ */

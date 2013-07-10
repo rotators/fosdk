@@ -1,0 +1,5 @@
+clients_list.txt
+last_id.txt
+
+*.client
+*.client_deleted

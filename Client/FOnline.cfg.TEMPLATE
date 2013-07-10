@@ -1,0 +1,12 @@
+[Game Options]
+WindowName = FOnline SDK
+
+Logging            = True
+LoggingDebugOutput = True
+LoggingTime        = True
+LoggingThread      = True
+
+ServerAppName = FOnlineServer
+ServerPath    = ..\Server\
+ServerCommandLine = -showgui -nologpath
+Language = engl

@@ -1,0 +1,133 @@
+bool start() // reserved
+{
+    return( true );
+}
+
+uint loop() // reserved
+{
+    return( 0 );
+}
+
+void get_active_screens( int[]& result ) // reserved
+{
+}
+
+void screen_change( bool show, int screen, int p0, int p1, int p2 ) // reserved
+{
+}
+
+void render_iface( uint layer ) // reserved
+{
+}
+
+void render_map() // reserved
+{
+}
+
+void critter_in( CritterCl& cr) // reserved
+{
+}
+
+void critter_out( CritterCl& cr ) // reserved
+{
+}
+
+void item_map_in( ItemCl& item ) // reserved
+{
+}
+
+void item_map_changed( ItemCl& item, ItemCl& itemBefore ) // reserved
+{
+}
+
+void item_map_out( ItemCl& item ) // reserved
+{
+}
+
+void item_inv_in( ItemCl& item ) // reserved
+{
+}
+
+void item_inv_out( ItemCl& item ) // reserved
+{
+}
+
+bool map_message( string& message, uint16& hx, uint16& hy, uint& color, uint& delay ) // reserved
+{
+    return( true );
+}
+
+bool in_message( string& message, int& sayType, uint& crId, uint& delay ) // reserved
+{
+    return( true );
+}
+
+bool out_message( string& message, int& sayType ) // reserved
+{
+    return( true );
+}
+
+int to_hit( CritterCl& cr, CritterCl& target, ProtoItem& weapon, uint8 weaponMode ) // reserved
+{
+    return( 95 );
+}
+
+void hit_aim( uint8& aim ) // reserved
+{
+}
+
+void combat_result( uint[]& data ) // reserved
+{
+}
+
+string generic_description( int descType, int& ox, int& oy ) // reserved
+{
+    return( "" );
+}
+
+string item_description( ItemCl& item, int lookType ) // reserved
+{
+    return( "" );
+}
+
+string critter_description( CritterCl& cr, int lookType ) // reserved
+{
+    return( "" );
+}
+
+bool get_elevator( uint type, uint[]& data ) // reserved
+{
+    return( true );
+}
+
+uint item_cost( ItemCl& item, CritterCl& cr, CritterCl& trader, bool sell ) // reserved
+{
+    return( 1 );
+}
+
+bool check_perk( CritterCl& cr, uint perk ) // reserved
+{
+    return( true );
+}
+
+void player_data_generate( int[]& data ) // reserved
+{
+}
+
+bool player_data_check( string& name, int[]& data ) // reserved
+{
+    return( true );
+}
+
+void critter_action( bool local, CritterCl& cr, int action, int actionEx, ItemCl@ item ) // reserved
+{
+}
+
+void items_collection( int collection, ItemCl@[]& items ) // reserved
+{
+}
+
+bool critter_check_move_item(CritterCl&,ItemCl&,uint8,ItemCl@) // reserved
+{
+    return( true );
+}

@@ -1,0 +1,55 @@
+#ifndef __MAPPER_MAIN__
+#define __MAPPER_MAIN__
+
+void start() // reserved
+{
+}
+
+uint loop() // reserved
+{
+    return( 10 );
+}
+
+bool console_message( string& message ) // reserved
+{
+    return( false );
+}
+
+void render_iface(uint layer ) // reserved
+{
+}
+
+void render_map() // reserved
+{
+}
+
+bool mouse_down( int click ) // reserved
+{
+    return( false );
+}
+
+bool mouse_up( int click ) // reserved
+{
+    return( false );
+}
+
+void mouse_move( int mx, int my ) // reserved
+{
+}
+
+bool key_down( uint8 key, string& keyText ) // reserved
+{
+    return( false );
+}
+
+bool key_up( uint8 key, string& keyText ) // reserved
+{
+    return( false );
+}
+
+void input_lost() // reserved
+{
+}
+
+#endif // __MAPPER_MAIN__ //
+

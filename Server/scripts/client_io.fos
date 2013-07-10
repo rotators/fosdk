@@ -1,0 +1,41 @@
+#ifndef __CLIENT_IO__
+#define __CLIENT_IO__
+
+
+bool key_down( uint8 key, string& keyText ) // reserved
+{
+    return( false );
+}
+
+bool key_up( uint8, string& keyText ) // reserved
+{
+    return( false );
+}
+
+bool mouse_down( int click ) // reserved
+{
+    return( false );
+}
+
+bool mouse_up( int click ) // reserved
+{
+    return( false );
+}
+
+void mouse_move( int mx, int my ) // reserved
+{
+}
+
+void input_lost() // reserved
+{
+}
+
+void filename_logfile( string& ) // reserved
+{
+}
+
+void filename_screenshot( string& ) // reserved
+{
+}
+
+#endif // __CLIENT_IO__ //

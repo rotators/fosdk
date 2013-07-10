@@ -1,0 +1,7 @@
+#ifndef ___MACROS__
+#define ___MACROS__
+
+#define valid #(ptr) (@ptr!=null)
+
+#endif // ___MACROS__ //
+
