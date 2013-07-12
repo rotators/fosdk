@@ -921,5 +921,17 @@ namespace FOnline
             }
             return false;
         }
+
+        event EventHandler<GameTypeEventArgs> gameTypeHandle;
+        public IDisposable HandleGameType (EventHandler<GameTypeEventArgs> handler)
+        {
+            gameTypeHandle += handler;
+            return new DisposableEventHandler (() => gameTypeHandle -= handler);
+        }
+        public void InvokeGameTypeHandle(object sender, GameTypeEventArgs e)
+        {
+            if(this.gameTypeHandle != null)
+                this.gameTypeHandle(sender, e);
+        }
 	}
 }
