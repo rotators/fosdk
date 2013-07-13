@@ -17,7 +17,7 @@ namespace FOnline
 		[MethodImpl(MethodImplOptions.InternalCall)]
         extern static string GetName(IntPtr ptr);
 
-		public virtual void AddRef()
+        public virtual void AddRef()
         {
             AddRef(thisptr);
         }
