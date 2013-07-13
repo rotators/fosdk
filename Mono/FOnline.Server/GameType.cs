@@ -44,7 +44,7 @@ namespace FOnline
         public void HandleGameType(IGameTypeHandling engineObject)
         {
             eventHandlers.Add (engineObject.HandleGameType ((o,e) => 
-                                                            {
+            {
                 if (e.Type == this.GetType())
                     e.Callback (this); 
             }));
