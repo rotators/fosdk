@@ -26,7 +26,10 @@ namespace FOnline
         /// <returns></returns>
         internal static Scenery FromNative(IntPtr ptr)
         {
-            return new Scenery(ptr);
+            if (ptr == IntPtr.Zero)
+                return null;
+            else
+                return new Scenery(ptr);
         }
     }
 }
