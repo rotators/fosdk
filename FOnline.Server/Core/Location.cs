@@ -50,7 +50,10 @@ namespace FOnline
         }
         public override Location FromNative(IntPtr ptr)
         {
-            return new Location(ptr);
+            if(ptr == IntPtr.Zero)
+                return null;
+            else
+                return new Location(ptr);
         }
     }
 }
