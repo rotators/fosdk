@@ -142,14 +142,20 @@ namespace FOnline
         /// <summary>
         /// Raised when item is used on something.
         /// </summary>
-        public event EventHandler<ItemUseEventArgs> Use;
-        // called by engine
-        public bool RaiseUse(Critter cr, Critter on_critter, Item on_item, IntPtr on_scenery)
+        event EventHandler<ItemUseEventArgs> use;
+        public IDisposable Use(Action<ItemUseEventArgs> callback)
         {
-            if (Use != null)
+            EventHandler<ItemUseEventArgs> handler = (o,e) => callback(e);
+            use += handler;
+            return new DisposableEventHandler (() => use -= handler);
+        }
+        // called by engine
+        internal bool RaiseUse(Critter cr, Critter on_critter, Item on_item, IntPtr on_scenery)
+        {
+            if (use != null)
             {
                 var e = new ItemUseEventArgs(this, cr, on_critter, on_item, Scenery.FromNative(on_scenery));
-                Use(this, e);
+                use(this, e);
                 return e.Prevent;
             }
             return false;
