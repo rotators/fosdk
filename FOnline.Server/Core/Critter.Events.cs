@@ -743,8 +743,8 @@ namespace FOnline
         // called by engine
         void RaiseSmthUseItem(Critter from_cr, Item item, Critter on_cr, Item on_item, IntPtr on_scenery)
         {
-            if (SmthUseSkill != null)
-                SmthUseSkill(this, new CritterSmthUseItemEventArgs(this, from_cr, item, on_cr, on_item, Scenery.FromNative(on_scenery)));
+            if (SmthUseItem != null)
+                SmthUseItem(this, new CritterSmthUseItemEventArgs(this, from_cr, item, on_cr, on_item, Scenery.FromNative(on_scenery)));
         }
         /// <summary>
         /// Raised when critter sees other critter using skill on something.
