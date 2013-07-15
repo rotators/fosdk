@@ -6,7 +6,6 @@ using System.IO;
 using System.Reflection;
 using main = FOnline.Main;
 using System.Threading;
-using System.Runtime.CompilerServices;
 
 namespace FOnline
 {

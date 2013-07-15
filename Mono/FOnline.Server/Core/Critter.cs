@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FOnline
 {
-    public partial class Critter : IManagedWrapper, IGameTypeHandling
+    public partial class Critter : IManagedWrapper
     {
         readonly IntPtr thisptr;
         public Critter(IntPtr ptr)

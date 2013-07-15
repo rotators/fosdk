@@ -252,6 +252,33 @@ namespace FOnline
         }
         public Critter From { get; private set; }
     }
+    public class CritterSmthAttackEventArgs : CritterAttackEventArgs
+    {
+        public CritterSmthAttackEventArgs (Critter cr, Critter from_cr, Critter target)
+            : base(cr, target)
+        {
+            this.From = from_cr;
+        }
+        public Critter From { get; private set; }
+    }
+    public class CritterSmthAttackedEventArgs : CritterAttackedEventArgs
+    {
+        public CritterSmthAttackedEventArgs (Critter cr, Critter from_cr, Critter attacker)
+            : base(cr, attacker)
+        {
+            this.From = from_cr;
+        }
+        public Critter From { get; private set; }
+    }
+    public class CritterSmthUseItemEventArgs : CritterUseItemEventArgs
+    {
+        public CritterSmthUseItemEventArgs(Critter cr, Critter from_cr, Item item, Critter on_cr, Item on_item, Scenery on_scenery)
+            : base(cr, item, on_cr, on_item, on_scenery)
+        {
+            this.From = from_cr;
+        }
+        public Critter From { get; private set; }
+    }
     public class CritterSmthUseSkillEventArgs : CritterUseSkillEventArgs
     {
         public CritterSmthUseSkillEventArgs(Critter cr, Critter from_cr, int skill, Critter on_cr, Item on_item, Scenery on_scenery)
@@ -688,7 +715,37 @@ namespace FOnline
         {
             if (SmthStealing != null)
                 SmthStealing(this, new CritterSmthStealingEventArgs(this, from_cr, thief, success, item, count));
-        }        
+        }
+        /// <summary>
+        /// Raised when some critter in vicinity attacks another.
+        /// </summary>
+        public event EventHandler<CritterSmthAttackEventArgs> SmthAttack;
+        // called by engine
+        void RaiseSmthAttack(Critter from_cr, Critter target)
+        {
+            if (SmthAttack != null)
+                SmthAttack (this, new CritterSmthAttackEventArgs (this, from_cr, target));
+        }
+        /// <summary>
+        /// Raised when some critter in vicinity is being attacked by another.
+        /// </summary>
+        public event EventHandler<CritterSmthAttackedEventArgs> SmthAttacked;
+        // called by engine
+        void RaiseSmthAttacked(Critter from_cr, Critter attacker)
+        {
+            if (SmthAttacked != null)
+                SmthAttacked (this, new CritterSmthAttackedEventArgs (this, from_cr, attacker));
+        }
+        /// <summary>
+        /// Raised when critter sees other critter using item on something.
+        /// </summary>
+        public event EventHandler<CritterSmthUseItemEventArgs> SmthUseItem;
+        // called by engine
+        void RaiseSmthUseItem(Critter from_cr, Item item, Critter on_cr, Item on_item, IntPtr on_scenery)
+        {
+            if (SmthUseSkill != null)
+                SmthUseSkill(this, new CritterSmthUseItemEventArgs(this, from_cr, item, on_cr, on_item, Scenery.FromNative(on_scenery)));
+        }
         /// <summary>
         /// Raised when critter sees other critter using skill on something.
         /// </summary>
@@ -863,18 +920,6 @@ namespace FOnline
                 return true;
             }
             return false;
-        }
-
-        event EventHandler<GameTypeEventArgs> gameTypeHandle;
-        public IDisposable HandleGameType (EventHandler<GameTypeEventArgs> handler)
-        {
-            gameTypeHandle += handler;
-            return new DisposableEventHandler (() => gameTypeHandle -= handler);
-        }
-        public void InvokeGameTypeHandle(object sender, GameTypeEventArgs e)
-        {
-            if(this.gameTypeHandle != null)
-                this.gameTypeHandle(sender, e);
         }
 	}
 }
