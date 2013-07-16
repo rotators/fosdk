@@ -20,10 +20,7 @@ namespace FOnline
 
         public static explicit operator ProtoItem(IntPtr ptr)
         {
-            if (ptr == IntPtr.Zero)
-                return null;
-            else
-                return new ProtoItem(ptr);
+            return ptr != IntPtr.Zero ? new ProtoItem (ptr) : null;
         }
 
         public IntPtr ThisPtr { get { return thisptr; } }
