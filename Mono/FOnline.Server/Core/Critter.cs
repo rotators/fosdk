@@ -30,19 +30,20 @@ namespace FOnline
         }
         public IntPtr ThisPtr { get { return thisptr; } }
 
-        // for dev purposes
+        // for dev purposes, it's not required to keep the references here
         static Dictionary<IntPtr, Critter> critters = new Dictionary<IntPtr, Critter>();
         public static IEnumerable<Critter> AllCritters { get { return critters.Values; } }
 
-        static Critter Add(IntPtr ptr)
+        // creates default instance
+        static Critter Create(IntPtr ptr) // called by engine
         {
             if(critters.ContainsKey(ptr))
                 throw new InvalidOperationException(string.Format("Critter 0x{0:x} already added.", (int)ptr));
             return new Critter(ptr); // TODO: allow custom factory
         }
-        static void Remove(Critter cr)
+        static void Remove(IntPtr ptr) // called by engine
         {
-            critters.Remove(cr.ThisPtr);
+            critters.Remove(ptr);
         }
 
         string name = null;
