@@ -10,6 +10,7 @@ namespace FOnline
     {
         Item FromNative(IntPtr ptr);
         Item GetItem(uint item_id);
+        ProtoItem GetProtoItem (ushort pid);
         void MoveItem(Item item, uint count, Critter to_cr);
         void MoveItem(Item item, uint count, Item to_cont, uint stack_id);
         void MoveItem(Item item, uint count, Map to_map, ushort to_hx, ushort to_hy);
@@ -34,6 +35,12 @@ namespace FOnline
         public Item GetItem(uint item_id)
         {
             return (Item)Global_GetItem(item_id);
+        }
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static IntPtr Global_GetProtoItem(ushort pid);
+        public ProtoItem GetProtoItem(ushort pid)
+        {
+            return (ProtoItem)Global_GetProtoItem(pid);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Global_MoveItemCr(IntPtr item, uint count, IntPtr to_cr);
