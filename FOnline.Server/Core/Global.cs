@@ -105,6 +105,10 @@ namespace FOnline
         {
             return ItemManager.GetItem(item_id);
         }
+        public static ProtoItem GetProtoItem(ushort pid)
+        {
+            return ItemManager.GetProtoItem (pid);
+        }
         public static void MoveItem(Item item, uint count, Critter to_cr)
         {
             ItemManager.MoveItem(item, count, to_cr);
