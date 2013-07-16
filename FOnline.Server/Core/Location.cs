@@ -18,6 +18,10 @@ namespace FOnline
             Release();
         }
 
+        public static explicit operator Location(IntPtr ptr)
+        {
+            return ptr != IntPtr.Zero ? new Location (ptr) : null;
+        }
         public IntPtr ThisPtr { get { return thisptr; } }
         
         static Dictionary<uint, Location> locations = new Dictionary<uint, Location>();
@@ -50,10 +54,7 @@ namespace FOnline
         }
         public override Location FromNative(IntPtr ptr)
         {
-            if(ptr == IntPtr.Zero)
-                return null;
-            else
-                return new Location(ptr);
+            return (Location)GetObjectAddress(ptr);   
         }
     }
 }

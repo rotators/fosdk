@@ -21,6 +21,10 @@ namespace FOnline
         {
             return self != null ? self.ThisPtr : IntPtr.Zero;
         }
+        public static explicit operator Scenery(IntPtr ptr)
+        {
+            return ptr != IntPtr.Zero ? new Scenery (ptr) : null;
+        }
 
         public IntPtr ThisPtr { get { return thisptr; } }
 		public virtual void AddRef ()
@@ -51,7 +55,7 @@ namespace FOnline
         }
         public override Scenery FromNative(IntPtr ptr)
         {
-            return new Scenery(GetObjectAddress(ptr));
+            return (Scenery)GetObjectAddress(ptr);
         }
     }
 }

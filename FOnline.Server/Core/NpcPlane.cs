@@ -18,8 +18,13 @@ namespace FOnline
         {
             Release();
         }
-
+		
         public IntPtr ThisPtr { get { return thisptr; } }
+
+        public static explicit operator NpcPlane(IntPtr ptr)
+        {
+            return ptr != IntPtr.Zero ? new NpcPlane (ptr) : null;
+        }
     }
     public enum PlaneType
     {
@@ -57,7 +62,7 @@ namespace FOnline
         }
         public override NpcPlane FromNative(IntPtr ptr)
         {
-            return new NpcPlane(GetObjectAddress(ptr));
+            return (NpcPlane)GetObjectAddress(ptr);
         }
     }
 }
