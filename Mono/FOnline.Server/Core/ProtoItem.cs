@@ -20,8 +20,12 @@ namespace FOnline
 
         public static explicit operator ProtoItem(IntPtr ptr)
         {
-            return new ProtoItem(ptr);
+            if (ptr == IntPtr.Zero)
+                return null;
+            else
+                return new ProtoItem(ptr);
         }
+
         public IntPtr ThisPtr { get { return thisptr; } }
 		public virtual void AddRef()
 		{
