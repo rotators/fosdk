@@ -28,11 +28,11 @@ namespace FOnline
         }
         public IntPtr ThisPtr { get { return thisptr; } }
 
-        // for dev purposes
+        // for dev purposes, it's not required to keep the references here
         static Dictionary<IntPtr, Item> items = new Dictionary<IntPtr, Item>();
         public static IEnumerable<Item> AllItems { get { return items.Values; } }
-
-        static Item Add(IntPtr ptr)
+        // creates default instance
+        static Item Create(IntPtr ptr) // called by engine
         {
             //Program.Log("Adding item: (0x{0:x})", (int)ptr);
             if(items.ContainsKey(ptr))
@@ -41,10 +41,10 @@ namespace FOnline
             items[ptr] = item;
             return item;
         }
-        static void Remove(Item item)
+        static void Remove(IntPtr ptr) // called by engine
         {
             //Program.Log("Removing item: {0}(0x{1:x})", item.Id, (int)item.ThisPtr);
-            items.Remove(item.ThisPtr);
+            items.Remove(ptr);
         }
         // locker flags
         public virtual bool LockerIsOpen

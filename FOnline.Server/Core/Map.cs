@@ -23,10 +23,11 @@ namespace FOnline
         }
         public IntPtr ThisPtr { get { return thisptr; } }
 
-        // for dev purposes
+        // for dev purposes, it's not required to keep the references here
         static Dictionary<IntPtr, Map> maps = new Dictionary<IntPtr, Map>();
         public static IEnumerable<Map> AllMaps { get { return maps.Values; } } 
-        static Map Add(IntPtr ptr)
+        // creates default instance
+        static Map Create(IntPtr ptr) // called by engine
         {
             if(maps.ContainsKey(ptr))
                 throw new InvalidOperationException(string.Format("Map 0x{0:x} already added.", (int)ptr));
@@ -34,9 +35,9 @@ namespace FOnline
             maps[ptr] = map;
             return map;
         }
-        static void Remove(Map map) // called by engine
+        static void Remove(IntPtr ptr) // called by engine
         {
-            maps.Remove(map.ThisPtr);
+          maps.Remove(ptr);
         }
     }
     /// <summary>
