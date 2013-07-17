@@ -28,7 +28,7 @@ namespace FOnline
         bool IsCritterAnim1(uint cr_type);
 		uint GetCrittersDistantion(Critter cr1, Critter cr2);
         bool SwapCritters(Critter cr1, Critter cr2, bool with_inv, bool with_vars);
-        uint GetAllNpc(ushort pid, CritterArray npc);
+        uint GetAllNpc(ushort pid, IList<Critter> npc);
     }
     public class CritterManager : ICritterManager
     {
@@ -155,10 +155,10 @@ namespace FOnline
             return Global_SwapCritters(cr1.ThisPtr, cr2.ThisPtr, with_inv, with_vars);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetAllNpc(ushort pid, IntPtr array);
-        public uint GetAllNpc(ushort pid, CritterArray npc)
+        extern static uint Global_GetAllNpc(ushort pid, IList<Critter> critters);
+        public uint GetAllNpc(ushort pid, IList<Critter> critters)
         {
-            return Global_GetAllNpc(pid, (IntPtr)npc);
+            return Global_GetAllNpc(pid, critters);
         }
     }
 }

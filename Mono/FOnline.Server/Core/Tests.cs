@@ -719,28 +719,9 @@ int ValueAddress()
             Collect ();
             Tests.Assert(cr.RefCount == rc, "RC unchanged.");
         }
-        public static void HandleArray()
-        {
-            var cr = GetCritter();
-            int rc = cr.RefCount;
-            HandleArray_scope(cr, rc);
-            Collect ();
-            Tests.Assert (cr.RefCount == rc, "Array collected, rc--.");
-        }
-        static void HandleArray_scope(Critter cr, int rc)
-        {
-            var arr = new CritterArray { cr };
-            Tests.Assert (cr.RefCount == rc + 1, "Critter reference in array, rc++.");
-            var cr2 = arr[0];
-            Tests.Assert (cr.RefCount == rc + 1, "Fetching reference to same native resource, rc the same.");
-            arr[0] = null;
-            Tests.Assert (cr.RefCount == rc, "Reference cleared, rc--.");
-            arr[0] = cr;
-        }
         public static void Run()
         {
             CritterFromNative();
-            HandleArray();
         }
     }
     public static class ArrayTests

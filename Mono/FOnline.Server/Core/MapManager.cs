@@ -8,7 +8,7 @@ namespace FOnline
 {
     public interface IMapManager
     {
-        uint CreateLocation(ushort pid, ushort wx, ushort wy, CritterArray critters);
+        uint CreateLocation(ushort pid, ushort wx, ushort wy, IList<Critter> critters);
         void DeleteLocation(uint loc_id);
         Location GetLocation(uint loc_id);
         Location GetLocationByPid(ushort pid, uint skip_count);
@@ -35,10 +35,10 @@ namespace FOnline
             return Map_FromNative(ptr);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_CreateLocation(ushort pid, ushort wx, ushort wy, IntPtr critters);
-        public uint CreateLocation(ushort pid, ushort wx, ushort wy, CritterArray critters)
+        extern static uint Global_CreateLocation(ushort pid, ushort wx, ushort wy, IList<Critter> critters);
+        public uint CreateLocation(ushort pid, ushort wx, ushort wy, IList<Critter> critters)
         {
-            return Global_CreateLocation(pid, wx, wy, (IntPtr)critters);
+            return Global_CreateLocation(pid, wx, wy, critters);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]

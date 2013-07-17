@@ -216,27 +216,4 @@ namespace FOnline
         HalfEx = 2,
         None = 3
     }
-    /// <summary>
-    /// ScriptArray for critters.
-    /// </summary>
-    public sealed class CritterArray : HandleArray<Critter>
-    {
-        static readonly IntPtr type;
-        public CritterArray()
-            : base(type)
-        {
-        }
-        internal CritterArray(IntPtr ptr)
-            : base(ptr, true)
-        {
-        }
-        static CritterArray()
-        {
-            type = ScriptArray.GetType("array<Critter@>");
-        }
-        public override Critter FromNative(IntPtr ptr)
-        {
-            return (Critter)GetObjectAddress(ptr);
-        }
-    }
 }

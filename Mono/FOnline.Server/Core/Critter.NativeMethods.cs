@@ -170,10 +170,12 @@ namespace FOnline
             return Crit_TransitToGlobal(thisptr, request_group);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Crit_TransitToGlobalWithGroup(IntPtr thisptr, IntPtr group);
-        public virtual bool TransitToGlobal(CritterArray array)
+        extern static bool Crit_TransitToGlobalWithGroup(IntPtr thisptr, IList<Critter> group);
+        public virtual bool TransitToGlobal(IList<Critter> group)
         {
-            return Crit_TransitToGlobalWithGroup(thisptr, array.ThisPtr);
+            if (group == null)
+                throw new NullReferenceException ("group");
+            return Crit_TransitToGlobalWithGroup(thisptr, group);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Crit_TransitToGlobalGroup(IntPtr thisptr, uint critter_id);
@@ -373,16 +375,16 @@ namespace FOnline
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Crit_GetCritters(IntPtr thisptr, bool look_on_me, int find_type, IntPtr critters);
-        public virtual uint GetCritters(bool look_on_me, Find find_type, CritterArray critters)
+        extern static uint Crit_GetCritters(IntPtr thisptr, bool look_on_me, int find_type, IList<Critter> critters);
+        public virtual uint GetCritters(bool look_on_me, Find find_type, IList<Critter> critters)
         {
-            return Crit_GetCritters(thisptr, look_on_me, (int)find_type, critters != null ? critters.ThisPtr : IntPtr.Zero);
+            return Crit_GetCritters(thisptr, look_on_me, (int)find_type, critters);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Crit_GetFollowGroup(IntPtr thisptr, int find_type, IntPtr critters);
-        public virtual uint GetFollowGroup(Find find_type, CritterArray critters)
+        extern static uint Crit_GetFollowGroup(IntPtr thisptr, int find_type, IList<Critter> critters);
+        public virtual uint GetFollowGroup(Find find_type, IList<Critter> critters)
         {
-            return Crit_GetFollowGroup(thisptr, (int)find_type, critters != null ? critters.ThisPtr : IntPtr.Zero);
+            return Crit_GetFollowGroup(thisptr, (int)find_type, critters);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static IntPtr Crit_GetFollowLeader(IntPtr thisptr);
@@ -395,14 +397,19 @@ namespace FOnline
             return (Critter)Crit_GetFollowLeader(thisptr);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static IntPtr Crit_GetGlobalGroup(IntPtr thisptr);
+        extern static uint Crit_GetGlobalGroup(IntPtr thisptr, IList<Critter> critters);
         public virtual IList<Critter> GlobalGroup
         {
-            get { return new CritterArray(Crit_GetGlobalGroup(thisptr)); }
+            get 
+            { 
+                var res = new List<Critter> ();
+                Crit_GetGlobalGroup(thisptr, res);
+                return res;
+            }
         }
-        public virtual IList<Critter> GetGlobalGroup()
+        public virtual uint GetGlobalGroup(IList<Critter> critters)
         {
-            return new CritterArray(Crit_GetGlobalGroup(thisptr));
+            return Crit_GetGlobalGroup(thisptr, critters);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Crit_IsGlobalGroupLeader(IntPtr thisptr);
@@ -423,10 +430,10 @@ namespace FOnline
             Crit_GiveGlobalGroupLead(thisptr, to_cr.ThisPtr);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Npc_GetTalkedPlayers(IntPtr thisptr, IntPtr players);
-        public virtual uint GetTalkedPlayers(CritterArray players)
+        extern static uint Npc_GetTalkedPlayers(IntPtr thisptr, IList<Critter> players);
+        public virtual uint GetTalkedPlayers(IList<Critter> players)
         {
-            return Npc_GetTalkedPlayers(thisptr, players != null ? players.ThisPtr : IntPtr.Zero);
+            return Npc_GetTalkedPlayers(thisptr, players);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Crit_IsSeeCr(IntPtr thisptr, IntPtr cr);

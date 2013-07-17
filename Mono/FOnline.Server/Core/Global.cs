@@ -462,7 +462,7 @@ namespace FOnline
         #region Maps/Locations
         public static IMapManager MapManager { get; set; }
 
-        public static uint CreateLocation(ushort pid, ushort wx, ushort wy, CritterArray critters)
+        public static uint CreateLocation(ushort pid, ushort wx, ushort wy, IList<Critter> critters)
         {
             return MapManager.CreateLocation(pid, wx, wy, critters);
         }

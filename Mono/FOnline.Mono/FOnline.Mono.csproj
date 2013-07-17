@@ -61,6 +61,7 @@
     <Compile Include="REPL.cs" />
     <Compile Include="ScriptArray.cs" />
     <Compile Include="ScriptString.cs" />
+    <Compile Include="ListHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

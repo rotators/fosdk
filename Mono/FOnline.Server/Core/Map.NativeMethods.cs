@@ -265,40 +265,42 @@ namespace FOnline
             return (Critter)Map_GetCritterById(thisptr, critter_id);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetCritters(IntPtr thisptr, ushort hx, ushort hy, uint radius, int find_type, IntPtr critters);
-        public virtual uint GetCrittersHex(ushort hx, ushort hy, uint radius, Find find_type, CritterArray critters)
+        extern static uint Map_GetCritters(IntPtr thisptr, ushort hx, ushort hy, uint radius, int find_type, IList<Critter> critters);
+        public virtual uint GetCrittersHex(ushort hx, ushort hy, uint radius, Find find_type, IList<Critter> critters)
         {
-            return Map_GetCritters(thisptr, hx, hy, radius, (int)find_type, critters != null ? critters.ThisPtr : IntPtr.Zero);
+            return Map_GetCritters(thisptr, hx, hy, radius, (int)find_type, critters);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetCrittersByPids(IntPtr thisptr, ushort pid, int find_type, IntPtr critters);
-        public virtual uint GetCritters(ushort pid, Find find_type, CritterArray critters = null)
+        extern static uint Map_GetCrittersByPids(IntPtr thisptr, ushort pid, int find_type, IList<Critter> critters);
+        public virtual uint GetCritters(ushort pid, Find find_type, IList<Critter> critters = null)
         {
-            return Map_GetCrittersByPids(thisptr, pid, (int)find_type, critters != null ? critters.ThisPtr : IntPtr.Zero);
+            return Map_GetCrittersByPids(thisptr, pid, (int)find_type, critters);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetCrittersInPath(IntPtr thisptr, ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, int find_type, IntPtr critters);
-        public virtual uint GetCrittersPath(ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, Find find_type, CritterArray critters)
+        extern static uint Map_GetCrittersInPath(IntPtr thisptr, ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, int find_type, IList<Critter> critters);
+        public virtual uint GetCrittersPath(ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, Find find_type, IList<Critter> critters)
         {
-            return Map_GetCrittersInPath(thisptr, from_hx, from_hy, to_hx, to_hy, angle, dist, (int)find_type, critters != null ? critters.ThisPtr : IntPtr.Zero);
+            return Map_GetCrittersInPath(thisptr, from_hx, from_hy, to_hx, to_hy, angle, dist, (int)find_type, critters);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetCrittersInPath(IntPtr thisptr, ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, int find_type, IntPtr critters, out ushort pre_block_hx, out ushort pre_block_hy, out ushort block_hx, out ushort block_hy);
-        public virtual uint GetCrittersPath(ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, Find find_type, CritterArray critters, out ushort pre_block_hx, out ushort pre_block_hy, out ushort block_hx, out ushort block_hy)
+        extern static uint Map_GetCrittersInPath(IntPtr thisptr, ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, int find_type, IList<Critter> critters, out ushort pre_block_hx, out ushort pre_block_hy, out ushort block_hx, out ushort block_hy);
+        public virtual uint GetCrittersPath(ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, Find find_type, IList<Critter> critters, out ushort pre_block_hx, out ushort pre_block_hy, out ushort block_hx, out ushort block_hy)
         {
-            return Map_GetCrittersInPath(thisptr, from_hx, from_hy, to_hx, to_hy, angle, dist, (int)find_type, critters != null ? critters.ThisPtr : IntPtr.Zero, out pre_block_hx, out pre_block_hy, out block_hx, out block_hy);
+            return Map_GetCrittersInPath(thisptr, from_hx, from_hy, to_hx, to_hy, angle, dist, (int)find_type, critters, out pre_block_hx, out pre_block_hy, out block_hx, out block_hy);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetCrittersWhoViewPath(IntPtr thisptr, ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, int find_type, IntPtr critters);
-        public virtual uint GetCrittersWhoViewPath(ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, Find find_type, CritterArray critters)
+        extern static uint Map_GetCrittersWhoViewPath(IntPtr thisptr, ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, int find_type, IList<Critter> critters);
+        public virtual uint GetCrittersWhoViewPath(ushort from_hx, ushort from_hy, ushort to_hx, ushort to_hy, float angle, uint dist, Find find_type, IList<Critter> critters)
         {
-            return Map_GetCrittersWhoViewPath(thisptr, from_hx, from_hy, to_hx, to_hy, angle, dist, (int)find_type, critters != null ? critters.ThisPtr : IntPtr.Zero);
+            return Map_GetCrittersWhoViewPath(thisptr, from_hx, from_hy, to_hx, to_hy, angle, dist, (int)find_type, critters);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetCrittersSeeing(IntPtr thisptr, IntPtr critters, bool look_on_them, int find_type, IntPtr critters_result);
-        public virtual uint GetCrittersSeeing(CritterArray critters, bool look_on_them, Find find_type, CritterArray critters_result)
+        extern static uint Map_GetCrittersSeeing(IntPtr thisptr, IList<Critter> critters, bool look_on_them, int find_type, IList<Critter> critters_result);
+        public virtual uint GetCrittersSeeing(IList<Critter> critters, bool look_on_them, Find find_type, IList<Critter> critters_result)
         {
-            return Map_GetCrittersSeeing(thisptr, critters.ThisPtr, look_on_them, (int)find_type, critters_result != null ? critters_result.ThisPtr : IntPtr.Zero);
+            if (critters == null)
+                throw new NullReferenceException ("critters");
+            return Map_GetCrittersSeeing(thisptr, critters, look_on_them, (int)find_type, critters_result);
         }
  
         [MethodImpl(MethodImplOptions.InternalCall)]
