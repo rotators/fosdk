@@ -339,7 +339,7 @@ namespace FOnline
         extern static uint Crit_GetItemsByType(IntPtr thisptr, int type, IntPtr items);
         public virtual uint GetItemsByType(ItemType type, ItemArray items)
         {
-            return Crit_GetItems(thisptr, (int)type, items != null ? items.ThisPtr : IntPtr.Zero);
+            return Crit_GetItemsByType(thisptr, (int)type, items != null ? items.ThisPtr : IntPtr.Zero);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static IntPtr Crit_GetSlotProto(IntPtr thisptr, int slot, ref byte mode);
