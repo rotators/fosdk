@@ -37,7 +37,7 @@ namespace FOnline
     {
         List<IDisposable> eventHandlers = new List<IDisposable>();
 
-        public void Event(IDisposable handler)
+        public void When(IDisposable handler)
         {
             eventHandlers.Add (handler);
         }
@@ -49,7 +49,7 @@ namespace FOnline
                     e.Callback (this); 
             }));
         }
-        public void HandleGameType<T>(IGameTypeHandling native, Action<T> callback) where T: class
+        public void InteractWith<T>(IGameTypeHandling native, Action<T> callback) where T: class
         {
             native.InvokeGameTypeHandle(native, new GameTypeEventArgs(typeof(T), o => callback(o as T)));
         }

@@ -13,9 +13,9 @@ type NukaColaMachine(amount, coins, machine:Item) as self =
     inherit GameType()
     
     do
-     self.Event(machine.Use(fun e ->
+     self.When(machine.Use(fun e ->
          if self.Amount > 0 then
-             self.HandleGameType<Player>(e.Cr, fun player ->
+             self.InteractWith<Player>(e.Cr, fun player ->
                  if player.Coins > 0 then
                      player.Coins <- player.Coins - 1
                      self.Coins <- self.Coins + 1
