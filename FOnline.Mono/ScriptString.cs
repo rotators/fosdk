@@ -38,12 +38,12 @@ namespace FOnline
         }
         public static explicit operator ScriptString(string str)
         {
-            return new ScriptString(str);
+            return str != null ? new ScriptString(str) : null;
         }
 		public static explicit operator ScriptString(IntPtr ptr)
 		{
-			return new ScriptString(ptr);
-		}
+            return ptr != IntPtr.Zero ? new ScriptString(ptr) : null;
+        }
         public IntPtr ThisPtr { get { return thisptr; } }
 
         public void Set(string str)
