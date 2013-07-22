@@ -338,7 +338,7 @@ namespace FOnline
         extern static IntPtr Map_AddNpc(IntPtr thisptr, ushort pid, ushort hx, ushort hy, byte dir, IntPtr _params, IntPtr items, IntPtr script);
         public virtual Critter AddNpc(ushort pid, ushort hx, ushort hy, Direction dir, IntArray parameters, IntArray items, string script)
         {
-            return (Critter)Map_AddNpc(thisptr, pid, hx, hy, (byte)dir, (IntPtr)parameters, (IntPtr)items, ((ScriptString)script).ThisPtr);
+            return (Critter)Map_AddNpc(thisptr, pid, hx, hy, (byte)dir, (IntPtr)parameters, (IntPtr)items, (IntPtr)((ScriptString)script));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Map_GetNpcCount(IntPtr thisptr, int npc_role, int find_type);
