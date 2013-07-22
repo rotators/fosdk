@@ -129,6 +129,7 @@
     <Compile Include="Critter.Constants.cs" />
     <Compile Include="Core\Tests.cs" />
     <Compile Include="Serializator.cs" />
+    <Compile Include="EngineTypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
