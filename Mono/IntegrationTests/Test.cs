@@ -18,7 +18,7 @@ namespace IntegrationTests
                     var map = Global.GetLocation(loc).GetMapByIndex(0);
                     var res = test(map);
                     if(res) Global.Log("{0} PASSED", msg);
-                    else Global.Log("{0} FAILED");
+                    else Global.Log("{0} FAILED", msg);
                 } 
                 catch(Exception ex)
                 {
