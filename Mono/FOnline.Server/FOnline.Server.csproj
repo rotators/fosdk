@@ -133,6 +133,7 @@
     <Compile Include="Core\Tests.cs" />
     <Compile Include="Serializator.cs" />
     <Compile Include="GameType.cs" />
+    <Compile Include="EngineTypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
