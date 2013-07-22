@@ -1,0 +1,25 @@
+[Header]
+Version              4
+MaxHexX              100
+MaxHexY              100
+WorkHexX             99
+WorkHexY             1
+ScriptModule         -
+ScriptFunc           -
+NoLogOut             0
+Time                 0
+DayTime              300  600  1140 1380
+DayColor0            18  18  53 
+DayColor1            128 128 128
+DayColor2            103 95  86 
+DayColor3            51  40  29 
+
+[Tiles]
+tile_l     99   0            1 art\tiles\edgs000.frm
+
+[Objects]
+MapObjType           2
+ProtoId              3853
+MapX                 0
+MapY                 0
+

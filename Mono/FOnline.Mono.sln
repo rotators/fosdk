@@ -5,7 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FOnline.Server", "FOnline.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FOnline.Mono", "FOnline.Mono\FOnline.Mono.csproj", "{2365FF66-D33F-4A95-B128-5327EEFE068C}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "Tests\Tests.fsproj", "{89B638AB-F12B-4D28-A979-97F6F35DD0E1}"
+Project("{4925A630-B079-445d-BCD4-3A9C94FE9307}") = "Tests", "Tests\Tests.fsproj", "{89B638AB-F12B-4D28-A979-97F6F35DD0E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{7F117FD6-8835-4B2E-941C-E92AA971135F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,21 +23,26 @@ Global
 		{2365FF66-D33F-4A95-B128-5327EEFE068C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2365FF66-D33F-4A95-B128-5327EEFE068C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2365FF66-D33F-4A95-B128-5327EEFE068C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F117FD6-8835-4B2E-941C-E92AA971135F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F117FD6-8835-4B2E-941C-E92AA971135F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F117FD6-8835-4B2E-941C-E92AA971135F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F117FD6-8835-4B2E-941C-E92AA971135F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89B638AB-F12B-4D28-A979-97F6F35DD0E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89B638AB-F12B-4D28-A979-97F6F35DD0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89B638AB-F12B-4D28-A979-97F6F35DD0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89B638AB-F12B-4D28-A979-97F6F35DD0E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Tests\Tests.fsproj
+		StartupItem = IntegrationTests\IntegrationTests.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.FileWidth = 120
 		$1.TabsToSpaces = False
 		$1.inheritsSet = VisualStudio
 		$1.inheritsScope = text/plain
+		outputpath = ..\Server
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
