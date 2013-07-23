@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace FOnline
 {
@@ -22,6 +23,12 @@ namespace FOnline
         static object Get(IList list, int idx)
         {
             return list[idx];
+        }
+        // called by engine
+        static object Create(Type t)
+        {
+            var listType = typeof(List<>).MakeGenericType (t);
+            return Activator.CreateInstance(listType);
         }
     }
 }
