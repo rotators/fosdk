@@ -198,28 +198,28 @@ namespace FOnline
             return (Item)Map_GetItemHex(thisptr, hx, hy, pid);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetItemsHex(IntPtr thisptr, ushort hx, ushort hy, IntPtr items);
-        public virtual uint GetItems(ushort hx, ushort hy, ItemArray items)
+        extern static uint Map_GetItemsHex(IntPtr thisptr, ushort hx, ushort hy, IList<Item> items);
+        public virtual uint GetItems(ushort hx, ushort hy, IList<Item> items)
         {
-            return Map_GetItemsHex(thisptr, hx, hy, items != null ? items.ThisPtr : IntPtr.Zero);
+            return Map_GetItemsHex(thisptr, hx, hy, items);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetItemsHexEx(IntPtr thisptr, ushort hx, ushort hy, uint radius, ushort pid, IntPtr items);
-        public virtual uint GetItems(ushort hx, ushort hy, uint radius, ushort pid, ItemArray items)
+        extern static uint Map_GetItemsHexEx(IntPtr thisptr, ushort hx, ushort hy, uint radius, ushort pid, IList<Item> items);
+        public virtual uint GetItems(ushort hx, ushort hy, uint radius, ushort pid, IList<Item> items)
         {
-            return Map_GetItemsHexEx(thisptr, hx, hy, radius, pid, items != null ? items.ThisPtr : IntPtr.Zero);
+            return Map_GetItemsHexEx(thisptr, hx, hy, radius, pid, items);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetItemsByPid(IntPtr thisptr, ushort pid, IntPtr items);
-        public virtual uint GetItems(ushort pid, ItemArray items)
+        extern static uint Map_GetItemsByPid(IntPtr thisptr, ushort pid, IList<Item> items);
+        public virtual uint GetItems(ushort pid, IList<Item> items)
         {
-            return Map_GetItemsByPid(thisptr, pid, items != null ? items.ThisPtr : IntPtr.Zero);
+            return Map_GetItemsByPid(thisptr, pid, items);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetItemsByType(IntPtr thisptr, int type, IntPtr items);
-        public virtual uint GetItemsByType(int type, ItemArray items)
+        extern static uint Map_GetItemsByType(IntPtr thisptr, int type, IList<Item> items);
+        public virtual uint GetItemsByType(int type, IList<Item> items)
         {
-            return Map_GetItemsByType(thisptr, type, items != null ? items.ThisPtr : IntPtr.Zero);
+            return Map_GetItemsByType(thisptr, type, items);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static IntPtr Map_GetDoor(IntPtr thisptr, ushort hx, ushort hy);
@@ -299,7 +299,7 @@ namespace FOnline
         public virtual uint GetCrittersSeeing(IList<Critter> critters, bool look_on_them, Find find_type, IList<Critter> critters_result)
         {
             if (critters == null)
-                throw new NullReferenceException ("critters");
+                throw new ArgumentNullException ("critters");
             return Map_GetCrittersSeeing(thisptr, critters, look_on_them, (int)find_type, critters_result);
         }
  

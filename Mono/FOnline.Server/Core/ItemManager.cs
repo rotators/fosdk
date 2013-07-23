@@ -14,13 +14,13 @@ namespace FOnline
         void MoveItem(Item item, uint count, Critter to_cr);
         void MoveItem(Item item, uint count, Item to_cont, uint stack_id);
         void MoveItem(Item item, uint count, Map to_map, ushort to_hx, ushort to_hy);
-        void MoveItems(ItemArray items, Critter to_cr);
-        void MoveItems(ItemArray items, Item to_cont, uint stack_id);
-        void MoveItems(ItemArray items, Map to_map, ushort to_hx, ushort to_hy);
+        void MoveItems(IList<Item> items, Critter to_cr);
+        void MoveItems(IList<Item> items, Item to_cont, uint stack_id);
+        void MoveItems(IList<Item> items, Map to_map, ushort to_hx, ushort to_hy);
         void DeleteItem(Item item);
-        void DeleteItems(ItemArray items);
+        void DeleteItems(IList<Item> items);
         ulong WorldItemCount(ushort pid);
-        uint GetAllItems(ushort pid, ItemArray items);
+        uint GetAllItems(ushort pid, IList<Item> items);
     }
     public class ItemManager : IItemManager
     {
@@ -61,22 +61,28 @@ namespace FOnline
             Global_MoveItemMap(item.ThisPtr, count, to_map.ThisPtr, to_hx, to_hy);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Global_MoveItemsCr(IntPtr items, IntPtr to_cr);
-        public void MoveItems(ItemArray items, Critter to_cr)
+        extern static void Global_MoveItemsCr(IList<Item> items, IntPtr to_cr);
+        public void MoveItems(IList<Item> items, Critter to_cr)
         {
-            Global_MoveItemsCr(items.ThisPtr, to_cr.ThisPtr);
+            if (items == null)
+                throw new ArgumentNullException ("items");
+            Global_MoveItemsCr(items, to_cr.ThisPtr);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Global_MoveItemsCont(IntPtr items, IntPtr to_cont, uint stack_id);
-        public void MoveItems(ItemArray items, Item to_cont, uint stack_id)
+        extern static void Global_MoveItemsCont(IList<Item> items, IntPtr to_cont, uint stack_id);
+        public void MoveItems(IList<Item> items, Item to_cont, uint stack_id)
         {
-            Global_MoveItemsCont(items.ThisPtr, to_cont.ThisPtr, stack_id);
+            if (items == null)
+                throw new ArgumentNullException ("items");
+            Global_MoveItemsCont(items, to_cont.ThisPtr, stack_id);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Global_MoveItemsMap(IntPtr items, IntPtr to_map, ushort to_hx, ushort to_hy);
-        public void MoveItems(ItemArray items, Map to_map, ushort to_hx, ushort to_hy)
+        extern static void Global_MoveItemsMap(IList<Item> items, IntPtr to_map, ushort to_hx, ushort to_hy);
+        public void MoveItems(IList<Item> items, Map to_map, ushort to_hx, ushort to_hy)
         {
-            Global_MoveItemsMap(items.ThisPtr, to_map.ThisPtr, to_hx, to_hy);
+            if (items == null)
+                throw new ArgumentNullException ("items");
+            Global_MoveItemsMap(items, to_map.ThisPtr, to_hx, to_hy);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Global_DeleteItem(IntPtr item);
@@ -85,10 +91,12 @@ namespace FOnline
             Global_DeleteItem(item.ThisPtr);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Global_DeleteItems(IntPtr items);
-        public void DeleteItems(ItemArray items)
+        extern static void Global_DeleteItems(IList<Item> items);
+        public void DeleteItems(IList<Item> items)
         {
-            Global_DeleteItems(items.ThisPtr);
+            if (items == null)
+                throw new ArgumentNullException ("items");
+            Global_DeleteItems(items);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static ulong Global_WorldItemCount(ushort pid);
@@ -97,10 +105,10 @@ namespace FOnline
             return Global_WorldItemCount(pid);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetAllItems(ushort pid, IntPtr array);
-        public uint GetAllItems(ushort pid, ItemArray items)
+        extern static uint Global_GetAllItems(ushort pid, IList<Item> array);
+        public uint GetAllItems(ushort pid, IList<Item> items)
         {
-            return Global_GetAllItems(pid, (IntPtr)items);
+            return Global_GetAllItems(pid, items);
         }
     }
 }

@@ -95,10 +95,10 @@ namespace FOnline
             return (Item)Container_GetItem(thisptr, pid, special_id);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Container_GetItems(IntPtr thisptr, uint special_id, IntPtr items);
-        public virtual uint GetItems(uint special_id, ItemArray items)
+        extern static uint Container_GetItems(IntPtr thisptr, uint special_id, IList<Item> items);
+        public virtual uint GetItems(uint special_id, IList<Item> items)
         {
-            return Container_GetItems(thisptr, special_id, (IntPtr)items);
+            return Container_GetItems(thisptr, special_id, items);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]

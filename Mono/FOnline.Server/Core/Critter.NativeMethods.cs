@@ -174,7 +174,7 @@ namespace FOnline
         public virtual bool TransitToGlobal(IList<Critter> group)
         {
             if (group == null)
-                throw new NullReferenceException ("group");
+                throw new ArgumentNullException ("group");
             return Crit_TransitToGlobalWithGroup(thisptr, group);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
@@ -332,16 +332,16 @@ namespace FOnline
             return (Item)Crit_GetItemById(thisptr, item_id);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Crit_GetItems(IntPtr thisptr, int slot, IntPtr items);
-        public virtual uint GetItems(Nullable<ItemSlot> slot, ItemArray items)
+        extern static uint Crit_GetItems(IntPtr thisptr, int slot, IList<Item> items);
+        public virtual uint GetItems(Nullable<ItemSlot> slot, IList<Item> items)
         {
-            return Crit_GetItems(thisptr, slot != null ? (int)slot : -1, items != null ? items.ThisPtr : IntPtr.Zero);
+            return Crit_GetItems(thisptr, slot != null ? (int)slot : -1, items);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Crit_GetItemsByType(IntPtr thisptr, int type, IntPtr items);
-        public virtual uint GetItemsByType(ItemType type, ItemArray items)
+        extern static uint Crit_GetItemsByType(IntPtr thisptr, int type, IList<Item> items);
+        public virtual uint GetItemsByType(ItemType type, IList<Item> items)
         {
-            return Crit_GetItemsByType(thisptr, (int)type, items != null ? items.ThisPtr : IntPtr.Zero);
+            return Crit_GetItemsByType(thisptr, (int)type, items);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static IntPtr Crit_GetSlotProto(IntPtr thisptr, int slot, ref byte mode);

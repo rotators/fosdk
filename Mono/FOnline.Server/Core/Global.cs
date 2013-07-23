@@ -121,15 +121,15 @@ namespace FOnline
         {
             ItemManager.MoveItem(item, count, to_map, to_hx, to_hy);
         }
-        public static void MoveItems(ItemArray items, Critter to_cr)
+        public static void MoveItems(IList<Item> items, Critter to_cr)
         {
             ItemManager.MoveItems(items, to_cr);
         }
-        public static void MoveItems(ItemArray items, Item to_cont, uint stack_id)
+        public static void MoveItems(IList<Item> items, Item to_cont, uint stack_id)
         {
             ItemManager.MoveItems(items, to_cont, stack_id);
         }
-        public static void MoveItems(ItemArray items, Map to_map, ushort to_hx, ushort to_hy)
+        public static void MoveItems(IList<Item> items, Map to_map, ushort to_hx, ushort to_hy)
         {
             ItemManager.MoveItems(items, to_map, to_hx, to_hy);
         }
@@ -137,13 +137,17 @@ namespace FOnline
         {
             ItemManager.DeleteItem(item);
         }
-        public static void DeleteItems(ItemArray items)
+        public static void DeleteItems(IList<Item> items)
         {
             ItemManager.DeleteItems(items);
         }
         public static ulong WorldItemCount(ushort pid)
         {
             return ItemManager.WorldItemCount(pid);
+        }
+        public static uint GetAllItems(ushort pid, IList<Item> items)
+        {
+            return ItemManager.GetAllItems (pid, items);
         }
         #endregion
 

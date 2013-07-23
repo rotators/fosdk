@@ -216,28 +216,4 @@ namespace FOnline
         ServiceExt,
         Eternal
     }
-    /// <summary>
-    /// ScriptArray for items.
-    /// </summary>
-    public sealed class ItemArray : HandleArray<Item>
-    {
-        static readonly IntPtr type;
-        public ItemArray()
-            : base(type)
-        {
-
-        }
-        internal ItemArray(IntPtr ptr)
-            : base(ptr, true)
-        {
-        }
-        static ItemArray()
-        {
-            type = ScriptArray.GetType("array<Item@>");
-        }
-        public override Item FromNative(IntPtr ptr)
-        {
-            return (Item)GetObjectAddress(ptr);         
-        }
-    }
 }

@@ -34,6 +34,17 @@ namespace IntegrationTests
                 Global.Log("Unable to spawn test location");
             }
         }
+
+        public static Critter SpawnTestNpc(Map map, int x, int y, Direction dir = Direction.NorthEast)
+        {
+            return map.AddNpc (1, (ushort)x, (ushort)y, dir, null, null, null);
+        }
+
+        public static Item SpawnContainer(Map map, int x, int y, int count = 1)
+        {
+            // we're gonna exploit the content of test.fopro - pid=type for first 13 entries
+            return map.AddItem ((ushort)x, (ushort)y, (ushort)ItemType.Container, (uint)count);
+        }
     }
 }
 

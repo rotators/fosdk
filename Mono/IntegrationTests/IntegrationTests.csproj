@@ -43,10 +43,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Tests\Tests.fsproj">
-      <Project>{89B638AB-F12B-4D28-A979-97F6F35DD0E1}</Project>
-      <Name>Tests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FOnline.Server\FOnline.Server.csproj">
       <Project>{0D4B0E4C-BE64-44F2-A7C9-09578D3EED3E}</Project>
       <Name>FOnline.Server</Name>
