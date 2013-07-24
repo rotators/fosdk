@@ -29,20 +29,23 @@ namespace FOnline
 
         public bool Save(string name)
         {
-            if(buffer.Count==0) return false;
+            throw new NotImplementedException ();
+            /*if(buffer.Count==0) return false;
             bool result=Global.SetAnyData(name,new UInt8Array(buffer));
             Clear();
-            return result;
+            return result;*/
         }
 
         public bool Load(string name)
         {
+            throw new NotImplementedException ();
+            /*
             Clear();
             if (!Global.IsAnyData(name)) return false;
             var data = new UInt8Array();
             if(!Global.GetAnyData(name,data)) return false;
             buffer.AddRange(data);
-            return true;
+            return true;*/
         }
 
         void Clear()

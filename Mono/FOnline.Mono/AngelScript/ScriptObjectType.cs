@@ -44,15 +44,6 @@ namespace FOnline.AngelScript
 			Func<string, int> get_tid = d => ScriptEngine.GetTypeIdByDecl(d);
 			TypeActivators[get_tid("string")] = ptr => new ScriptString(ptr);
 
-			TypeActivators[get_tid("array<bool>")] = ptr => new BoolArray(ptr);
-			TypeActivators[get_tid("array<int8>")] = ptr => new Int8Array(ptr);
-			TypeActivators[get_tid("array<int16>")] = ptr => new Int16Array(ptr);
-			TypeActivators[get_tid("array<int>")] = ptr => new IntArray(ptr);
-			TypeActivators[get_tid("array<uint8>")] = ptr => new UInt8Array(ptr);
-			TypeActivators[get_tid("array<uint16>")] = ptr => new UInt16Array(ptr);
-			TypeActivators[get_tid("array<uint>")] = ptr => new UIntArray(ptr);
-			TypeActivators[get_tid("array<float>")] = ptr => new FloatArray(ptr);
-			TypeActivators[get_tid("array<double>")] = ptr => new DoubleArray(ptr);
 			TypeActivators[get_tid("array<string>")] = ptr => new ScriptStringArray(ptr);
 			TypeActivators[get_tid("array<string@>")] = ptr => new ScriptStringHandleArray(ptr);
 		}

@@ -76,13 +76,13 @@ namespace FOnline
     public class ItemsBarterEventArgs : SuccessEventArgs
     {
         public IList<Item> SaleItems { get; private set; }
-        public UIntArray SaleItemsCount { get; private set; }
+        public IList<uint> SaleItemsCount { get; private set; }
         public IList<Item> BuyItems { get; private set; }
-        public UIntArray BuyItemsCount { get; private set; }
+        public IList<uint> BuyItemsCount { get; private set; }
         public Critter Player { get; private set; }
         public Critter Npc { get; private set; }
-        public ItemsBarterEventArgs(IList<Item> sale_items, UIntArray sale_items_count, 
-                                    IList<Item> buy_items, UIntArray buy_items_count, 
+        public ItemsBarterEventArgs(IList<Item> sale_items, IList<uint> sale_items_count, 
+                                    IList<Item> buy_items, IList<uint> buy_items_count, 
                                     Critter player, Critter npc)
         {
             this.SaleItems = sale_items;
@@ -96,10 +96,10 @@ namespace FOnline
     public class ItemsCraftedEventArgs : EventArgs
     {
         public IList<Item> Items { get; private set; }
-        public UIntArray ItemsCount { get; private set; }
+        public IList<uint> ItemsCount { get; private set; }
         public IList<Item> Resources { get; private set; }
         public Critter Crafter { get; private set; }
-        public ItemsCraftedEventArgs(IList<Item> items, UIntArray items_count, IList<Item> resources, Critter crafter)
+        public ItemsCraftedEventArgs(IList<Item> items, IList<uint> items_count, IList<Item> resources, Critter crafter)
         {
             this.Items = items;
             this.ItemsCount = items_count;
@@ -432,13 +432,13 @@ namespace FOnline
         /// </summary>
         public static event EventHandler<ItemsBarterEventArgs> ItemsBarter;
         // called by engine
-        static bool RaiseItemsBarter(IList<Item> sale_items, IntPtr sale_items_count, IList<Item> buy_items, IntPtr buy_items_count, Critter player, Critter npc)
+        static bool RaiseItemsBarter(IList<Item> sale_items, IList<uint> sale_items_count, IList<Item> buy_items, IList<uint> buy_items_count, Critter player, Critter npc)
         {
             ItemsBarterEventArgs e = null;
             if (ItemsBarter != null)
             {
-                e = new ItemsBarterEventArgs(sale_items, new UIntArray(sale_items_count),
-                    buy_items, new UIntArray(buy_items_count),
+                e = new ItemsBarterEventArgs(sale_items, sale_items_count,
+                    buy_items, buy_items_count,
                     player, npc);
                 ItemsBarter(null, e);
             }
@@ -449,11 +449,11 @@ namespace FOnline
         /// </summary>
         public static event EventHandler<ItemsCraftedEventArgs> ItemsCrafted;
         // called by engine
-        static void RaiseItemsCrafted(IList<Item> items, IntPtr items_count, IList<Item> resources, Critter crafter)
+        static void RaiseItemsCrafted(IList<Item> items, IList<uint> items_count, IList<Item> resources, Critter crafter)
         {
             if (ItemsCrafted != null)
             {
-                ItemsCrafted(null, new ItemsCraftedEventArgs(items, new UIntArray(items_count), resources, crafter));
+                ItemsCrafted(null, new ItemsCraftedEventArgs(items, items_count, resources, crafter));
             }
         }
         /// <summary>

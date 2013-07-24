@@ -586,10 +586,12 @@ namespace FOnline
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Crit_SendCombatResult(IntPtr thisptr, IntPtr combat_result);
-        public virtual void SendCombatResult(UIntArray combat_result)
+        extern static void Crit_SendCombatResult(IntPtr thisptr, uint[] combat_result);
+        public virtual void SendCombatResult(uint[] combat_result)
         {
-            Crit_SendCombatResult(thisptr, combat_result.ThisPtr);
+            if (combat_result == null)
+                throw new ArgumentNullException ("combat_result");
+            Crit_SendCombatResult(thisptr, combat_result);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Cl_IsKnownLoc(IntPtr thisptr, bool by_id, uint loc_num);
@@ -633,14 +635,14 @@ namespace FOnline
             Cl_ShowScreen(thisptr, (int)screen_type, param, ss.ThisPtr);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Cl_RunClientScript(IntPtr thisptr, IntPtr func_name, int p0, int p1, int p2, IntPtr p3, IntPtr p4);
-        public virtual void RunClientScript(string func_name, int p0, int p1, int p2, string p3, IntArray p4)
+        extern static void Cl_RunClientScript(IntPtr thisptr, IntPtr func_name, int p0, int p1, int p2, IntPtr p3, int[] p4);
+        public virtual void RunClientScript(string func_name, int p0, int p1, int p2, string p3, int[] p4)
         {
 			var func_name_ = new ScriptString(func_name);
 			var p3_ = p3 != null ? new ScriptString(p3) : null;
             Cl_RunClientScript(thisptr, func_name_.ThisPtr, p0, p1, p2, 
                 p3_ != null ? p3_.ThisPtr : IntPtr.Zero,
-                p4 != null ? p4.ThisPtr : IntPtr.Zero);
+                p4);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Cl_Disconnect(IntPtr thisptr);
@@ -683,20 +685,16 @@ namespace FOnline
             get { return Crit_GetBagRefreshTime(thisptr); }
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Crit_SetInternalBag(IntPtr thisptr, IntPtr pids, IntPtr min_counts, IntPtr max_counts, IntPtr slots);
-        public virtual void SetInternalBag(UInt16Array pids, UIntArray min_counts, UIntArray max_counts, IntArray slots)
+        extern static void Crit_SetInternalBag(IntPtr thisptr, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots);
+        public virtual void SetInternalBag(IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots)
         {
-            Crit_SetInternalBag(thisptr, pids.ThisPtr, min_counts.ThisPtr, max_counts.ThisPtr, slots.ThisPtr);
+            Crit_SetInternalBag(thisptr, pids, min_counts, max_counts, slots);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Crit_GetInternalBag(IntPtr thisptr, IntPtr pids, IntPtr min_counts, IntPtr max_counts, IntPtr slots);
-        public virtual uint GetInternalBag(UInt16Array pids, UIntArray min_counts, UIntArray max_counts, IntArray slots)
+        extern static uint Crit_GetInternalBag(IntPtr thisptr, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots);
+        public virtual uint GetInternalBag(IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots)
         {
-            return Crit_GetInternalBag(thisptr, 
-                pids != null ? pids.ThisPtr : IntPtr.Zero,
-                min_counts != null ? min_counts.ThisPtr : IntPtr.Zero,
-                max_counts != null ? max_counts.ThisPtr : IntPtr.Zero,
-                slots != null ? slots.ThisPtr : IntPtr.Zero);
+            return Crit_GetInternalBag (thisptr, pids, min_counts, max_counts, slots);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static ushort Crit_GetProtoId(IntPtr thisptr);
@@ -751,10 +749,12 @@ namespace FOnline
             Crit_ChangeEnemyStackSize(thisptr, new_size);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Crit_GetEnemyStack(IntPtr thisptr, IntPtr enemy_stack);
-        public virtual void GetEnemyStack(UIntArray enemy_stack)
+        extern static void Crit_GetEnemyStack(IntPtr thisptr, IList<uint> enemy_stack);
+        public virtual void GetEnemyStack(IList<uint> enemy_stack)
         {
-            Crit_GetEnemyStack(thisptr, enemy_stack.ThisPtr);
+            if (enemy_stack == null)
+                throw new ArgumentNullException ("enemy_stack");
+            Crit_GetEnemyStack(thisptr, enemy_stack);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Crit_ClearEnemyStack(IntPtr thisptr);
@@ -792,16 +792,18 @@ namespace FOnline
             return Crit_AddTimeEventRate(thisptr, CoreUtils.ParseFuncName(cte).ThisPtr, duration, identifier, rate); 
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Crit_GetTimeEvents(IntPtr thisptr, int identifier, IntPtr indexes, IntPtr durations, IntPtr rates);
-        public virtual uint GetTimeEvents(int identifier, UIntArray indexes, UIntArray durations, UIntArray rates)
+        extern static uint Crit_GetTimeEvents(IntPtr thisptr, int identifier, IList<uint> indexes, IList<uint> durations, IList<uint> rates);
+        public virtual uint GetTimeEvents(int identifier, IList<uint> indexes, IList<uint> durations, IList<uint> rates)
         {
-            return Crit_GetTimeEvents(thisptr, identifier, (IntPtr)indexes, (IntPtr)durations, (IntPtr)rates);
+            return Crit_GetTimeEvents(thisptr, identifier, indexes, durations, rates);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Crit_GetTimeEventsArr(IntPtr thisptr, IntPtr find_identifiers, IntPtr identifiers, IntPtr indexes, IntPtr durations, IntPtr rates);
-        public virtual uint GetTimeEvents(IntArray find_identifiers, IntArray identifiers, UIntArray indexes, UIntArray durations, UIntArray rates)
+        extern static uint Crit_GetTimeEventsArr (IntPtr thisptr, IList<int> find_identifiers, IList<int> identifiers, IList<uint> indexes, IList<uint> durations, IList<uint> rates);
+        public virtual uint GetTimeEvents(IList<int> find_identifiers, IList<int> identifiers, IList<uint> indexes, IList<uint> durations, IList<uint> rates)
         {
-            return Crit_GetTimeEventsArr(thisptr, (IntPtr)find_identifiers, (IntPtr)identifiers, (IntPtr)indexes, (IntPtr)durations, (IntPtr)rates);
+            if (find_identifiers == null)
+                throw new ArgumentNullException ("find_identifiers");
+            return Crit_GetTimeEventsArr(thisptr, find_identifiers, identifiers, indexes, durations, rates);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Crit_ChangeTimeEvent(IntPtr thisptr, uint index, uint new_duration, uint new_rate);
@@ -822,10 +824,12 @@ namespace FOnline
             return Crit_EraseTimeEvents(thisptr, identifier);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Crit_EraseTimeEventsArr(IntPtr thisptr, IntPtr identifiers);
-        public virtual uint EraseTimeEvents(IntArray identifiers)
+        extern static uint Crit_EraseTimeEventsArr(IntPtr thisptr, IList<int> identifiers);
+        public virtual uint EraseTimeEvents(IList<int> identifiers)
         {
-            return Crit_EraseTimeEventsArr(thisptr, (IntPtr)identifiers);
+            if (identifiers == null)
+                throw new ArgumentNullException ("identifiers");
+            return Crit_EraseTimeEventsArr(thisptr, identifiers);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace FOnline
@@ -10,7 +11,7 @@ namespace FOnline
 		void RadioMessage(ushort channel, string text);
 		void RadioMessageMsg(ushort channel, ushort textMsg, uint strNum);
 		void RadioMessageMsg(ushort channel, ushort textMsg, uint strNum, string lexems);
-        uint GetBagItems(uint bag_id, UInt16Array pids, UIntArray min_counts, UIntArray max_counts, IntArray slots);
+        uint GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots);
         bool AddTextListener(Say say_type, string first_str, ushort parameter, string script_name);
         void EraseTextListener(Say say_type, string first_str, ushort parameter);
         uint GetScriptId(string script_name, string func_decl);
@@ -51,10 +52,10 @@ namespace FOnline
 			Global_RadioMessageMsgLex(channel, text_msg, str_num, ss.ThisPtr);
 		}
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetBagItems(uint bag_id, IntPtr pids, IntPtr min_counts, IntPtr max_counts, IntPtr slots);
-        public uint GetBagItems(uint bag_id, UInt16Array pids, UIntArray min_counts, UIntArray max_counts, IntArray slots)
+        extern static uint Global_GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots);
+        public uint GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots)
         {
-            return Global_GetBagItems(bag_id, (IntPtr)pids, (IntPtr)min_counts, (IntPtr)max_counts, (IntPtr)slots);
+            return Global_GetBagItems(bag_id, pids, min_counts, max_counts, slots);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Global_AddTextListener(int say_type, IntPtr first_str, ushort parameter, IntPtr script_name);

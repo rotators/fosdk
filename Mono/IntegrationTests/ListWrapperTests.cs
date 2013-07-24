@@ -190,5 +190,18 @@ namespace IntegrationTests
                 return count == items.Count && count > 0;
             });
         }
+        public static void Global_GetAllNpc()
+        {
+            Test.OnMap ("Global_GetAllNpc", map =>
+            {
+                Test.SpawnTestNpc(map, 0, 0);
+                Test.SpawnTestNpc(map, 1, 1);
+
+                var npcs = new List<Critter>();
+                var count = Global.GetAllNpc(0, npcs);
+
+                return count == npcs.Count && count >= 2;
+            });
+        }
     }
 }

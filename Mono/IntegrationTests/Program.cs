@@ -14,6 +14,7 @@ namespace IntegrationTests
             main.Start += (o,e) =>
             {
                 // TODO: iterate over types and functions marked as tests
+                ListWrapperTests.Global_GetAllNpc();
                 ListWrapperTests.Crit_GetCritters ();
                 ListWrapperTests.Crit_GetItems();
                 ListWrapperTests.Crit_GetItemsByType();

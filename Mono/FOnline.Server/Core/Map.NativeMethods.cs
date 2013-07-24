@@ -160,10 +160,12 @@ namespace FOnline
             Map_EndTurnBased(thisptr);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static int Map_GetTurnBasedSequence(IntPtr thisptr, IntPtr critter_ids);
-        public virtual int GetTurnBasedSequence(UIntArray critter_ids)
+        extern static int Map_GetTurnBasedSequence(IntPtr thisptr, IList<uint> critter_ids);
+        public virtual int GetTurnBasedSequence(IList<uint> critter_ids)
         {
-            return Map_GetTurnBasedSequence(thisptr, critter_ids != null ? critter_ids.ThisPtr : IntPtr.Zero);
+            if (critter_ids == null)
+                throw new ArgumentNullException ("critter_ids");
+            return Map_GetTurnBasedSequence(thisptr, critter_ids);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
@@ -335,10 +337,10 @@ namespace FOnline
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static IntPtr Map_AddNpc(IntPtr thisptr, ushort pid, ushort hx, ushort hy, byte dir, IntPtr _params, IntPtr items, IntPtr script);
-        public virtual Critter AddNpc(ushort pid, ushort hx, ushort hy, Direction dir, IntArray parameters, IntArray items, string script)
+        extern static IntPtr Map_AddNpc(IntPtr thisptr, ushort pid, ushort hx, ushort hy, byte dir, IList<int> _params, IList<int> items, IntPtr script);
+        public virtual Critter AddNpc(ushort pid, ushort hx, ushort hy, Direction dir, IList<int> parameters, IList<int> items, string script)
         {
-            return (Critter)Map_AddNpc(thisptr, pid, hx, hy, (byte)dir, (IntPtr)parameters, (IntPtr)items, (IntPtr)((ScriptString)script));
+            return (Critter)Map_AddNpc(thisptr, pid, hx, hy, (byte)dir, parameters, items, (IntPtr)((ScriptString)script));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Map_GetNpcCount(IntPtr thisptr, int npc_role, int find_type);
@@ -360,10 +362,10 @@ namespace FOnline
             return Map_CountEntire(thisptr, entire);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetEntires(IntPtr thisptr, int entire, IntPtr entires, IntPtr hx, IntPtr hy);
-        public virtual uint GetEntires(int entire, UIntArray entires, UInt16Array hx, UInt16Array hy)
+        extern static uint Map_GetEntires(IntPtr thisptr, int entire, IList<uint> entires, IList<ushort> hx, IList<ushort> hy);
+        public virtual uint GetEntires(int entire, IList<uint> entires, IList<ushort> hx, IList<ushort> hy)
         {
-            return Map_GetEntires(thisptr, entire, (IntPtr)entires, (IntPtr)hx, (IntPtr)hy);
+            return Map_GetEntires(thisptr, entire, entires, hx, hy);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Map_GetEntireCoords(IntPtr thisptr, int entire, uint skip, ref ushort hx, ref ushort hy);

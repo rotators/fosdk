@@ -97,6 +97,10 @@ namespace FOnline
 		{
 			return CritterManager.GetCrittersDistantion(cr1, cr2);
 		}
+        public static uint GetAllNpc(ushort pid, IList<Critter> npc)
+        {
+            return CritterManager.GetAllNpc (pid, npc);
+        }
         #endregion
 
         #region Item manager
@@ -323,59 +327,59 @@ namespace FOnline
         public static IAnyData AnyData { get; set; }
         public static bool IsAnyData(string name)
         {
-            return AnyData.IsAnyData(name);
+            throw new NotImplementedException ();//return AnyData.IsAnyData(name);
         }
-        public static bool GetAnyData(string name, UInt8Array data)
+        public static bool GetAnyData(string name, IList<byte> data)
         {
-            return AnyData.Get(name, data);
+            throw new NotImplementedException ();//return AnyData.Get(name, data);
         }
-        public static bool SetAnyData(string name, UInt8Array data)
+        public static bool SetAnyData(string name, IList<byte> data)
         {
-            return AnyData.Set(name, data);
+            throw new NotImplementedException ();//return AnyData.Set(name, data);
         }
-        public static bool GetAnyData(string name, UInt16Array data)
+        public static bool GetAnyData(string name, IList<ushort> data)
         {
-            return AnyData.Get(name, data);
+            throw new NotImplementedException ();//return AnyData.Get(name, data);
         }
-        public static bool SetAnyData(string name, UInt16Array data)
+        public static bool SetAnyData(string name, IList<ushort> data)
         {
-            return AnyData.Set(name, data);
+            throw new NotImplementedException ();//return AnyData.Set(name, data);
         }
-        public static bool GetAnyData(string name, UIntArray data)
+        public static bool GetAnyData(string name, IList<uint> data)
         {
-            return AnyData.Get(name, data);
+            throw new NotImplementedException ();//return AnyData.Get(name, data);
         }
-        public static bool SetAnyData(string name, UIntArray data)
+        public static bool SetAnyData(string name, IList<uint> data)
         {
-            return AnyData.Set(name, data);
+            throw new NotImplementedException ();//return AnyData.Set(name, data);
         }
-        public static bool GetAnyData(string name, Int8Array data)
+        public static bool GetAnyData(string name, IList<sbyte> data)
         {
-            return AnyData.Get(name, data);
+            throw new NotImplementedException ();//return AnyData.Get(name, data);
         }
-        public static bool SetAnyData(string name, Int8Array data)
+        public static bool SetAnyData(string name, IList<sbyte> data)
         {
-            return AnyData.Set(name, data);
+            throw new NotImplementedException ();//return AnyData.Set(name, data);
         }
-        public static bool GetAnyData(string name, Int16Array data)
+        public static bool GetAnyData(string name, IList<short> data)
         {
-            return AnyData.Get(name, data);
+            throw new NotImplementedException ();//return AnyData.Get(name, data);
         }
-        public static bool SetAnyData(string name, Int16Array data)
+        public static bool SetAnyData(string name, IList<short> data)
         {
-            return AnyData.Set(name, data);
+            throw new NotImplementedException ();//return AnyData.Set(name, data);
         }
-        public static bool GetAnyData(string name, IntArray data)
+        public static bool GetAnyData(string name, IList<int> data)
         {
-            return AnyData.Get(name, data);
+            throw new NotImplementedException ();// return AnyData.Get(name, data);
         }
-        public static bool SetAnyData(string name, IntArray data)
+        public static bool SetAnyData(string name, IList<int> data)
         {
-            return AnyData.Set(name, data);
+            throw new NotImplementedException ();//return AnyData.Set(name, data);
         }
         public static void EraseAnyData(string name)
         {
-            AnyData.Erase(name);
+            throw new NotImplementedException ();//AnyData.Erase(name);
         }
         #endregion
 
@@ -406,19 +410,19 @@ namespace FOnline
         {
             return TimeEvents.CreateTimeEvent(begin_second, func, value, save);
         }
-        public static uint CreateTimeEvent(uint begin_second, string func_name, UIntArray values, bool save)
+        public static uint CreateTimeEvent(uint begin_second, string func_name, IList<uint> values, bool save)
         {
             return TimeEvents.CreateTimeEvent(begin_second, func_name, values, save);
         }
-        public static uint CreateTimeEvent(uint begin_second, Func<IntPtr, uint> func, UIntArray values, bool save)
+        public static uint CreateTimeEvent(uint begin_second, Func<IntPtr, uint> func, IList<uint> values, bool save)
         {
             return TimeEvents.CreateTimeEvent(begin_second, func, values, save);
         }
-        public static uint CreateTimeEvent(uint begin_second, string func_name, IntArray values, bool save)
+        public static uint CreateTimeEvent(uint begin_second, string func_name, IList<int> values, bool save)
         {
             return TimeEvents.CreateTimeEvent(begin_second, func_name, values, save);
         }
-        public static uint CreateTimeEvent(uint begin_second, Func<IntPtr, uint> func, IntArray values, bool save)
+        public static uint CreateTimeEvent(uint begin_second, Func<IntPtr, uint> func, IList<int> values, bool save)
         {
             return TimeEvents.CreateTimeEvent(begin_second, func, values, save);
         }
@@ -426,19 +430,19 @@ namespace FOnline
         {
             return TimeEvents.EraseTimeEvent(id);
         }
-        public static bool GetTimeEvent(uint id, out uint duration, UIntArray values)
+        public static bool GetTimeEvent(uint id, out uint duration, IList<uint> values)
         {
             return TimeEvents.GetTimeEvent(id, out duration, values);
         }
-        public static bool GetTimeEvent(uint id, out uint duration, IntArray values)
+        public static bool GetTimeEvent(uint id, out uint duration, IList<int> values)
         {
             return TimeEvents.GetTimeEvent(id, out duration, values);
         }
-        public static bool SetTimeEvent(uint id, uint duration, UIntArray values)
+        public static bool SetTimeEvent(uint id, uint duration, IList<uint> values)
         {
             return TimeEvents.SetTimeEvent(id, duration, values);
         }
-        public static bool SetTimeEvent(uint id, uint duration, IntArray values)
+        public static bool SetTimeEvent(uint id, uint duration, IList<int> values)
         {
             return TimeEvents.SetTimeEvent(id, duration, values);
         }
@@ -490,7 +494,7 @@ namespace FOnline
         {
             return MapManager.GetVisibleLocations(wx, wy, radius, visible_for, locations);
         }
-        public static uint GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, UIntArray location_ids)
+        public static uint GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, IList<uint> location_ids)
         {
             return MapManager.GetZoneLocationIds(zx, zy, zone_radius, location_ids);
         }
@@ -574,15 +578,13 @@ namespace FOnline
         {
             return Misc.GetPlayerName(id);
         }
-        public static uint GetBagItems(uint bag_id, UInt16Array pids, UIntArray min_counts, UIntArray max_counts, IntArray slots)
+        public static uint GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots)
         {
             return Misc.GetBagItems(bag_id, pids, min_counts, max_counts, slots);
         }
-        public static uint GetBagItems(uint bag_id, UInt16Array pids, UIntArray min_counts, UIntArray max_counts, List<ItemSlot> slots)
+        public static uint GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, List<ItemSlot> slots)
         {
-            var slots_ = new IntArray();
-            var res = Misc.GetBagItems(bag_id, pids, min_counts, max_counts, slots_);
-            slots.AddRange(slots_.Select (s => (ItemSlot)s));
+            var res = Misc.GetBagItems(bag_id, pids, min_counts, max_counts, slots);
             return res;
         }
         public static bool AddTextListener(Say say_type, string first_str, ushort parameter, string script_name)

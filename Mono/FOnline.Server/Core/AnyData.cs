@@ -8,7 +8,7 @@ namespace FOnline
 {
     public interface IAnyData
     {
-        bool Get(string name, UInt8Array data);
+        /*bool Get(string name, UInt8Array data);
         bool Set(string name, UInt8Array data);
         bool Get(string name, UInt16Array data);
         bool Set(string name, UInt16Array data);
@@ -23,11 +23,11 @@ namespace FOnline
         bool Get(string name, IntArray data);
         bool Set(string name, IntArray data);
         bool IsAnyData(string name);
-        void Erase(string name);
+        void Erase(string name);*/
     }
     public class AnyData : IAnyData
     {
-        [MethodImpl(MethodImplOptions.InternalCall)]
+        /*[MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Global_SetAnyData(IntPtr name, IntPtr data);
 
         public bool Set(string name, int[] data)
@@ -111,7 +111,7 @@ namespace FOnline
         {
 			var ss = new ScriptString(name);
             Global_EraseAnyData(ss.ThisPtr);
-        }
+        }*/
 /*  
  * 
 "bool SetAnyData(string& name, int64[]& data)", asFUNCTION( BIND_CLASS Global_SetAnyData ), asCALL_CDECL ) );

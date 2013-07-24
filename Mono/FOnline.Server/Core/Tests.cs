@@ -34,7 +34,6 @@ namespace FOnline
             {
                 AngelScriptTests.Run();
                 BindFuncTests.Run();
-                ArrayTests.Run();
             }
             finally
             {
@@ -722,36 +721,6 @@ int ValueAddress()
         public static void Run()
         {
             CritterFromNative();
-        }
-    }
-    public static class ArrayTests
-    {
-        static void AddRange()
-        {
-            var arr = new IntArray(new[] { 0, 1, 2 });
-            arr.AddRange(new[] { 3, 4 });
-            Tests.Assert(arr.Length == 5, "AddRange array length.");
-            Tests.Assert(arr[3] == 3, "AddRange first added element.");
-            Tests.Assert(arr[4] == 4, "AddRange last element.");
-        }
-        static void Iterating()
-        {
-            var arr = new IntArray(new [] { 0, 1, 2, 3 });
-            bool iter = true;
-            int i = 0;
-            int c = 0;
-            foreach(var e in arr) 
-            {
-                c++;
-                if(e != i++)
-                    iter = false;
-            }
-            Tests.Assert(iter, "Iterating over value array");
-            Tests.Assert(c == arr.Length, "Iteration count");
-        }
-        public static void Run()
-        {
-            AddRange();
         }
     }
 }

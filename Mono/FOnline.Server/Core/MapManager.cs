@@ -14,7 +14,7 @@ namespace FOnline
         Location GetLocationByPid(ushort pid, uint skip_count);
         uint GetLocations(ushort wx, ushort wy, uint radius, LocationArray locations);
         uint GetVisibleLocations(ushort wx, ushort wy, uint radius, Critter visible_for, LocationArray locations);
-        uint GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, UIntArray location_ids);
+        uint GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, IList<uint> location_ids);
 
         Map FromNativeMap(IntPtr ptr);
         Map GetMap(uint map_id);
@@ -74,10 +74,10 @@ namespace FOnline
             return Global_GetVisibleLocations(wx, wy, radius, visible_for.ThisPtr, (IntPtr)locations);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, IntPtr location_ids);
-        public uint GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, UIntArray location_ids)
+        extern static uint Global_GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, IList<uint> location_ids);
+        public uint GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, IList<uint> location_ids)
         {
-            return Global_GetZoneLocationIds(zx, zy, zone_radius, (IntPtr)location_ids);
+            return Global_GetZoneLocationIds(zx, zy, zone_radius, location_ids);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
