@@ -12,16 +12,16 @@ namespace FOnline
         void DeleteLocation(uint loc_id);
         Location GetLocation(uint loc_id);
         Location GetLocationByPid(ushort pid, uint skip_count);
-        uint GetLocations(ushort wx, ushort wy, uint radius, LocationArray locations);
-        uint GetVisibleLocations(ushort wx, ushort wy, uint radius, Critter visible_for, LocationArray locations);
+        uint GetLocations(ushort wx, ushort wy, uint radius, IList<Location> locations);
+        uint GetVisibleLocations(ushort wx, ushort wy, uint radius, Critter visible_for, IList<Location> locations);
         uint GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, IList<uint> location_ids);
 
         Map FromNativeMap(IntPtr ptr);
         Map GetMap(uint map_id);
         Map GetMapByPid(ushort pid, uint skip_count);
 
-        uint GetAllMaps(ushort pid, MapArray maps);
-        uint GetAllLocations(ushort pid, LocationArray locations);
+        uint GetAllMaps(ushort pid, IList<Map> maps);
+        uint GetAllLocations(ushort pid, IList<Location> locations);
     }
     /// <summary>
     /// Exposes global map/location managing facilities.
@@ -62,16 +62,16 @@ namespace FOnline
         }
         
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetLocations(ushort wx, ushort wy, uint radius, IntPtr locations);
-        public uint GetLocations(ushort wx, ushort wy, uint radius, LocationArray locations)
+        extern static uint Global_GetLocations(ushort wx, ushort wy, uint radius, IList<Location> locations);
+        public uint GetLocations(ushort wx, ushort wy, uint radius, IList<Location> locations)
         {
-            return Global_GetLocations(wx, wy, radius, (IntPtr)locations);
+            return Global_GetLocations(wx, wy, radius, locations);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetVisibleLocations(ushort wx, ushort wy, uint radius, IntPtr visible_for, IntPtr locations);
-        public uint GetVisibleLocations(ushort wx, ushort wy, uint radius, Critter visible_for, LocationArray locations)
+        extern static uint Global_GetVisibleLocations(ushort wx, ushort wy, uint radius, IntPtr visible_for, IList<Location> locations);
+        public uint GetVisibleLocations(ushort wx, ushort wy, uint radius, Critter visible_for, IList<Location> locations)
         {
-            return Global_GetVisibleLocations(wx, wy, radius, visible_for.ThisPtr, (IntPtr)locations);
+            return Global_GetVisibleLocations(wx, wy, radius, visible_for.ThisPtr, locations);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Global_GetZoneLocationIds(ushort zx, ushort zy, uint zone_radius, IList<uint> location_ids);
@@ -94,16 +94,16 @@ namespace FOnline
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetAllMaps(ushort pid, IntPtr array);
-        public uint GetAllMaps(ushort pid, MapArray maps)
+        extern static uint Global_GetAllMaps(ushort pid, IList<Map> array);
+        public uint GetAllMaps(ushort pid, IList<Map> maps)
         {
-            return Global_GetAllMaps(pid, (IntPtr)maps);
+            return Global_GetAllMaps(pid, maps);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetAllLocations(ushort pid, IntPtr array);
-        public uint GetAllLocations(ushort pid, LocationArray locations)
+        extern static uint Global_GetAllLocations(ushort pid, IList<Location> array);
+        public uint GetAllLocations(ushort pid, IList<Location> locations)
         {
-            return Global_GetAllLocations(pid, (IntPtr)locations);
+            return Global_GetAllLocations(pid, locations);
         }
     }
 }

@@ -25,7 +25,8 @@ namespace FOnline
         public IntPtr ThisPtr { get { return thisptr; } }
         
         static Dictionary<uint, Location> locations = new Dictionary<uint, Location>();
-        static Location Add(IntPtr ptr)
+        // called by engine
+        static Location Create(IntPtr ptr)
         {
             var loc = new Location(ptr);
             locations[loc.Id] = loc;
@@ -34,27 +35,6 @@ namespace FOnline
         static void Remove(Location loc)
         {
             locations.Remove(loc.Id);
-        }
-    }
-    public sealed class LocationArray : HandleArray<Location>
-    {
-        static readonly IntPtr type;
-        public LocationArray()
-            : base(type)
-        {
-
-        }
-        internal LocationArray(IntPtr ptr)
-            : base(ptr, true)
-        {
-        }
-        static LocationArray()
-        {
-            type = ScriptArray.GetType("array<Location@>");
-        }
-        public override Location FromNative(IntPtr ptr)
-        {
-            return (Location)GetObjectAddress(ptr);   
         }
     }
 }

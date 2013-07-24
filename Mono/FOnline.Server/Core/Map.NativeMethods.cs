@@ -236,22 +236,22 @@ namespace FOnline
             return (Item)Map_GetCar(thisptr, hx, hy);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetSceneriesHex(IntPtr thisptr, ushort hx, ushort hy, IntPtr sceneries);
-        public virtual uint GetSceneries(ushort hx, ushort hy, SceneryArray sceneries)
+        extern static uint Map_GetSceneriesHex(IntPtr thisptr, ushort hx, ushort hy, IList<Scenery> sceneries);
+        public virtual uint GetSceneries(ushort hx, ushort hy, IList<Scenery> sceneries)
         {
-            return Map_GetSceneriesHex(thisptr, hx, hy, sceneries != null ? sceneries.ThisPtr : IntPtr.Zero);
+            return Map_GetSceneriesHex(thisptr, hx, hy, sceneries);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetSceneriesHexEx(IntPtr thisptr, ushort hx, ushort hy, uint radius, ushort pid, IntPtr sceneries);
-        public virtual uint GetSceneries(ushort hx, ushort hy, uint radius, ushort pid, SceneryArray sceneries)
+        extern static uint Map_GetSceneriesHexEx(IntPtr thisptr, ushort hx, ushort hy, uint radius, ushort pid, IList<Scenery> sceneries);
+        public virtual uint GetSceneries(ushort hx, ushort hy, uint radius, ushort pid, IList<Scenery> sceneries)
         {
-            return Map_GetSceneriesHexEx(thisptr, hx, hy, radius, pid, sceneries != null ? sceneries.ThisPtr : IntPtr.Zero);
+            return Map_GetSceneriesHexEx(thisptr, hx, hy, radius, pid, sceneries);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetSceneriesByPid(IntPtr thisptr, ushort pid, IntPtr sceneries);
-        public virtual uint GetSceneriesByPid(ushort pid, SceneryArray sceneries)
+        extern static uint Map_GetSceneriesByPid(IntPtr thisptr, ushort pid, IList<Scenery> sceneries);
+        public virtual uint GetSceneriesByPid(ushort pid, IList<Scenery> sceneries)
         {
-            return Map_GetSceneriesByPid(thisptr, pid,sceneries != null ? sceneries.ThisPtr : IntPtr.Zero);
+            return Map_GetSceneriesByPid(thisptr, pid, sceneries);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]

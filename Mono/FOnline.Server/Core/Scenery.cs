@@ -35,27 +35,11 @@ namespace FOnline
 		{
 			Release (thisptr);
 		}
-    }
-    public sealed class SceneryArray : HandleArray<Scenery>
-    {
-        static readonly IntPtr type;
-        public SceneryArray()
-            : base(type)
-        {
-            Global.Log("Creating SceneryArray({0})", type);
-        }
-        internal SceneryArray (IntPtr ptr)
-            : base(ptr, true)
-	    {
 
-	    }
-        static SceneryArray()
+        // called by engine
+        static Scenery Create(IntPtr ptr)
         {
-            type = ScriptArray.GetType("Scenery@[]");
-        }
-        public override Scenery FromNative(IntPtr ptr)
-        {
-            return (Scenery)GetObjectAddress(ptr);
+            return new Scenery(ptr);
         }
     }
 }

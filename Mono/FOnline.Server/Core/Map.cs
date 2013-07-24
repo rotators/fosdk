@@ -40,28 +40,4 @@ namespace FOnline
           maps.Remove(ptr);
         }
     }
-    /// <summary>
-    /// ScriptArray for maps.
-    /// </summary>
-    public sealed class MapArray : HandleArray<Map>
-    {
-        static readonly IntPtr type;
-        public MapArray()
-            : base(type)
-        {
-
-        }
-        internal MapArray(IntPtr ptr)
-            : base(ptr, true)
-        {
-        }
-        static MapArray()
-        {
-            type = ScriptArray.GetType("array<Map@>");
-        }
-        public override Map FromNative(IntPtr ptr)
-        {
-            return (Map)GetObjectAddress(ptr);
-        }
-    }
 }

@@ -37,10 +37,10 @@ namespace FOnline
             return (Map)Location_GetMapByIndex(thisptr, index);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Location_GetMaps(IntPtr thisptr, IntPtr maps);
-        public virtual uint GetMaps(MapArray maps)
+        extern static uint Location_GetMaps(IntPtr thisptr, IList<Map> maps);
+        public virtual uint GetMaps(IList<Map> maps)
         {
-            return Location_GetMaps(thisptr, (IntPtr)maps);
+            return Location_GetMaps(thisptr, maps);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Location_Reload(IntPtr thisptr);

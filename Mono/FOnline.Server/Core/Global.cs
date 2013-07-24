@@ -486,11 +486,11 @@ namespace FOnline
         {
             return MapManager.GetLocationByPid(pid, skip_count);
         }
-        public static uint GetLocations(ushort wx, ushort wy, uint radius, LocationArray locations)
+        public static uint GetLocations(ushort wx, ushort wy, uint radius, IList<Location> locations)
         {
             return MapManager.GetLocations(wx, wy, radius, locations);
         }
-        public static uint GetVisibleLocations(ushort wx, ushort wy, uint radius, Critter visible_for, LocationArray locations)
+        public static uint GetVisibleLocations(ushort wx, ushort wy, uint radius, Critter visible_for, IList<Location> locations)
         {
             return MapManager.GetVisibleLocations(wx, wy, radius, visible_for, locations);
         }

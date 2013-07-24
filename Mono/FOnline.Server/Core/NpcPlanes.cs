@@ -269,14 +269,14 @@ namespace FOnline
 
         public static uint EraseAttackPlane(this Critter npc, uint priority, uint critId)
         {
-            var planes = new NpcPlaneArray();
+            var planes = new List<NpcPlane>();
 	        uint count = npc.GetPlanes(planes);
 	        if(count==0) return 0;
 	        uint erased=0;
 
 	        for(uint i=0; i<count; i++)
 	        {
-		        if(planes[i].Attack_TargId==critId && npc.ErasePlane(i-erased)) erased++;
+		        if(planes[(int)i].Attack_TargId==critId && npc.ErasePlane(i-erased)) erased++;
 	        }
 
 	        return erased;

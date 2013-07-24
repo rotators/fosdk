@@ -74,21 +74,4 @@ namespace FOnline
             Release(thisptr);
         }
     }
-	public sealed class ScriptStringHandleArray : HandleArray<ScriptString>
-    {
-        static readonly IntPtr type;
-        public ScriptStringHandleArray() : base(type) {}
-        internal ScriptStringHandleArray(IntPtr ptr) : base(ptr, true) {}
-        static ScriptStringHandleArray() { type = ScriptArray.GetType("array<string@>"); }
-        public override ScriptString FromNative(IntPtr ptr) { return (ScriptString)GetObjectAddress(ptr); }
-    }
-	public sealed class ScriptStringArray : ScriptArray<ScriptString>
-    {
-        static readonly IntPtr type;
-        public ScriptStringArray() : base(type) {}
-        internal ScriptStringArray(IntPtr ptr) : base(ptr, true) {}
-        static ScriptStringArray() { type = ScriptArray.GetType("array<string>"); }
-        public override ScriptString FromNative(IntPtr ptr) { return (ScriptString)ptr; }
-		public override void ToNative(IntPtr ptr, ScriptString value) { throw new NotImplementedException(); }
-    }
 }

@@ -43,9 +43,6 @@ namespace FOnline.AngelScript
 		{
 			Func<string, int> get_tid = d => ScriptEngine.GetTypeIdByDecl(d);
 			TypeActivators[get_tid("string")] = ptr => new ScriptString(ptr);
-
-			TypeActivators[get_tid("array<string>")] = ptr => new ScriptStringArray(ptr);
-			TypeActivators[get_tid("array<string@>")] = ptr => new ScriptStringHandleArray(ptr);
 		}
 		public static object Instantiate(IntPtr ptr, int tid)
 		{
@@ -54,13 +51,7 @@ namespace FOnline.AngelScript
 				return activator(ptr);
 			// other hardcoded cases
 			var ot = ScriptEngine.GetObjectTypeById(tid);
-			if(ot.Name == "array")
-			{
-				if((ot.SubTypeId & (int)asETypeIdFlags.asTYPEID_OBJHANDLE) != 0)
-					return new ScriptObjectHandleArray(ptr, ot.SubType);
-				else 
-					return new ScriptObjectArray(ptr, ot.SubType);
-			}
+
 			return null;
 		}
 

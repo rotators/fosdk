@@ -25,6 +25,12 @@ namespace FOnline
         {
             return ptr != IntPtr.Zero ? new NpcPlane (ptr) : null;
         }
+
+        // called by engine
+        static NpcPlane Create(IntPtr ptr)
+        {
+            return new NpcPlane (ptr);
+        }
     }
     public enum PlaneType
     {
@@ -43,26 +49,5 @@ namespace FOnline
         public const uint Pick = 35;
         public const uint Patrol = 25;
         public const uint Courier = 30;
-    }
-    public sealed class NpcPlaneArray : HandleArray<NpcPlane>
-    {
-        static readonly IntPtr type;
-        public NpcPlaneArray()
-            : base(type)
-        {
-
-        }
-        internal NpcPlaneArray(IntPtr ptr)
-            : base(ptr, true)
-        {
-        }
-        static NpcPlaneArray()
-        {
-            type = ScriptArray.GetType("array<NpcPlane@>");
-        }
-        public override NpcPlane FromNative(IntPtr ptr)
-        {
-            return (NpcPlane)GetObjectAddress(ptr);
-        }
     }
 }

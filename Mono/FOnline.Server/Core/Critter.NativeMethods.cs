@@ -523,22 +523,22 @@ namespace FOnline
             return new NpcPlane(Npc_GetCurPlane(thisptr));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Npc_GetPlanes(IntPtr thisptr, IntPtr planes);
-        public virtual uint GetPlanes(NpcPlaneArray planes)
+        extern static uint Npc_GetPlanes(IntPtr thisptr, IList<NpcPlane> planes);
+        public virtual uint GetPlanes(IList<NpcPlane> planes)
         {
-            return Npc_GetPlanes(thisptr, (IntPtr)planes);
+            return Npc_GetPlanes(thisptr, planes);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Npc_GetPlanesIdentifier(IntPtr thisptr, int identifier, IntPtr planes);
-        public virtual uint GetPlanes(int identifier, NpcPlaneArray planes)
+        extern static uint Npc_GetPlanesIdentifier(IntPtr thisptr, int identifier, IList<NpcPlane> planes);
+        public virtual uint GetPlanes(int identifier, IList<NpcPlane> planes)
         {
-            return Npc_GetPlanesIdentifier(thisptr, identifier, (IntPtr)planes);
+            return Npc_GetPlanesIdentifier(thisptr, identifier, planes);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Npc_GetPlanesIdentifier2(IntPtr thisptr, int identifier, uint identifier_ext, IntPtr planes);
-        public virtual uint GetPlanes(int identifier, uint identifier_ext, NpcPlaneArray planes)
+        extern static uint Npc_GetPlanesIdentifier2(IntPtr thisptr, int identifier, uint identifier_ext, IList<NpcPlane> planes);
+        public virtual uint GetPlanes(int identifier, uint identifier_ext, IList<NpcPlane> planes)
         {
-            return Npc_GetPlanesIdentifier2(thisptr, identifier, identifier_ext, (IntPtr)planes);
+            return Npc_GetPlanesIdentifier2(thisptr, identifier, identifier_ext, planes);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Npc_AddPlane(IntPtr thisptr, IntPtr plane);
