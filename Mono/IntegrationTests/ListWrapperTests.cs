@@ -10,6 +10,7 @@ namespace IntegrationTests
     // but many tests here do this - and they should only test whether MonoListWrapper worked correctly
     public static class ListWrapperTests
     {
+        [Test]
         public static void Crit_GetCritters ()
         {
             Test.OnMap ("Crit_GetCritters", map =>
@@ -23,6 +24,7 @@ namespace IntegrationTests
                 return crits.Count == count;
             });
         }
+        [Test]
         public static void Crit_GetItems()
         {
             Test.OnMap ("Crit_GetItems", map =>
@@ -37,6 +39,7 @@ namespace IntegrationTests
                 return items.Count == count && count == 2;
             });
         }
+        [Test]
         public static void Crit_GetItemsByType()
         {
             Test.OnMap ("Crit_GetItems", map =>
@@ -51,6 +54,7 @@ namespace IntegrationTests
                 return items.Count == count && count == 1;
             });
         }
+        [Test]
         public static void Map_GetItemsHex()
         {
             Test.OnMap ("Map_GetItemsHex", map =>
@@ -64,6 +68,7 @@ namespace IntegrationTests
                 return items.Count == count && count == 2 && items.Contains (it1) && items.Contains(it2);
             });
         }
+        [Test]
         public static void Map_GetItemsHexEx()
         {
             Test.OnMap("Map_GetItemsHexEx", map =>
@@ -79,6 +84,7 @@ namespace IntegrationTests
                 return items.Count == count && count == 2 && (!items.Select(i => i.ProtoId).ToList().Contains(2));
             });
         }
+        [Test]
         public static void Map_GetItemsByPid()
         {
             Test.OnMap("Map_GetItemsByPid", map =>
@@ -95,6 +101,7 @@ namespace IntegrationTests
                 return items.Count == count && count == allItems.Count(i => i.ProtoId == 1);
             });
         }
+        [Test]
         public static void Map_GetItemsByType()
         {
             Test.OnMap ("Map_GetItemsByType", map =>
@@ -111,6 +118,7 @@ namespace IntegrationTests
                 return count == items.Count && count == allItems.Count(i => i.Type == (ItemType)1);
             });
         }
+        [Test]
         public static void Global_MoveItemsCr()
         {
             Test.OnMap ("Global_MoveItemsCr", map =>
@@ -125,6 +133,7 @@ namespace IntegrationTests
                 return crItems.Count == 2 && crItems.Count(i => i.ProtoId == 1) == 1 && crItems.Count(i => i.ProtoId == 2) == 1;
             });
         }
+        [Test]
         public static void Global_MoveItemsCont()
         {
             Test.OnMap ("Global_MoveItemsCont", map =>
@@ -139,6 +148,7 @@ namespace IntegrationTests
                 return contItems.Count == 2 && contItems.Count(i => i.ProtoId == 1) == 1 && contItems.Count(i => i.ProtoId == 2) == 1;
             });
         }
+        [Test]
         public static void Global_MoveItemsMap()
         {
             Test.OnMap ("Global_MoveItemsMap", map =>
@@ -153,6 +163,7 @@ namespace IntegrationTests
                 return mapItems.Count == 2 && mapItems.Count(i => i.ProtoId == 1) == 1 && mapItems.Count(i => i.ProtoId == 2) == 1;
             });
         }
+        [Test]
         public static void Container_GetItems()
         {
             Test.OnMap ("Container_GetItems", map =>
@@ -166,6 +177,7 @@ namespace IntegrationTests
                 return items.Count == count && contItems.Count(i => i.ProtoId == 1) == 1 && contItems.Count(i => i.ProtoId == 2) == 1;
             });
         }
+        [Test]
         public static void Global_DeleteItems()
         {
             // TODO: how to detect deleted items?
@@ -180,6 +192,7 @@ namespace IntegrationTests
                 return items.TrueForAll(i => i.IsNotValid);
             });*/
         }
+        [Test]
         public static void Global_GetAllItems()
         {
             Test.OnMap ("Global_GetAllItems", map =>
@@ -190,6 +203,7 @@ namespace IntegrationTests
                 return count == items.Count && count > 0;
             });
         }
+        [Test]
         public static void Global_GetAllNpc()
         {
             Test.OnMap ("Global_GetAllNpc", map =>
