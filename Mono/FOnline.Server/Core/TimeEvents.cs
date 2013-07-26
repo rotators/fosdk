@@ -26,41 +26,45 @@ namespace FOnline
     public class TimeEvents : ITimeEvents
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_CreateTimeEventEmpty(uint begin_second, IntPtr func_name, bool save);
+        extern static uint Global_CreateTimeEventEmpty(uint begin_second, string func_name, bool save);
         public uint CreateTimeEvent(uint begin_second, string func_name, bool save)
         {
-            return Global_CreateTimeEventEmpty(begin_second, CoreUtils.ParseFuncName(func_name).ThisPtr, save);
+            if (func_name == null)
+                throw new ArgumentNullException ("func_name");
+            return Global_CreateTimeEventEmpty(begin_second, CoreUtils.ParseFuncName(func_name), save);
         }
         public uint CreateTimeEvent(uint begin_second, Func<IntPtr, uint> func, bool save)
         {
             var type = func.Method.DeclaringType;
-            return Global_CreateTimeEventEmpty(begin_second, CoreUtils.ParseFuncName(type.FullName + "::" + func.Method.Name).ThisPtr, save);
+            return Global_CreateTimeEventEmpty(begin_second, CoreUtils.ParseFuncName(type.FullName + "::" + func.Method.Name), save);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_CreateTimeEventValue(uint begin_second, IntPtr func_name, uint value, bool save);
+        extern static uint Global_CreateTimeEventValue(uint begin_second, string func_name, uint value, bool save);
         public uint CreateTimeEvent(uint begin_second, string func_name, uint value, bool save)
         {
-            return Global_CreateTimeEventValue(begin_second, CoreUtils.ParseFuncName(func_name).ThisPtr, value, save);
+            if (func_name == null)
+                throw new ArgumentNullException ("func_name");
+            return Global_CreateTimeEventValue(begin_second, CoreUtils.ParseFuncName(func_name), value, save);
         }
         public uint CreateTimeEvent(uint begin_second, Func<IntPtr, uint> func, uint value, bool save)
         {
             var type = func.Method.DeclaringType;
-            return Global_CreateTimeEventValue(begin_second, CoreUtils.ParseFuncName(type.FullName + "::" + func.Method.Name).ThisPtr, value, save);
+            return Global_CreateTimeEventValue(begin_second, CoreUtils.ParseFuncName(type.FullName + "::" + func.Method.Name), value, save);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_CreateTimeEventValues(uint begin_second, IntPtr func_name, IList<uint> values, bool save);
+        extern static uint Global_CreateTimeEventValues(uint begin_second, string func_name, IList<uint> values, bool save);
         public uint CreateTimeEvent(uint begin_second, string func_name, IList<uint> values, bool save)
         {
             if (values == null)
                 throw new ArgumentNullException ("values");
-            return Global_CreateTimeEventValues(begin_second, CoreUtils.ParseFuncName(func_name).ThisPtr, values, save);
+            return Global_CreateTimeEventValues(begin_second, CoreUtils.ParseFuncName(func_name), values, save);
         }
         public uint CreateTimeEvent(uint begin_second, Func<IntPtr, uint> func, IList<uint> values, bool save)
         {
             if (values == null)
                 throw new ArgumentNullException ("values");
             var type = func.Method.DeclaringType;
-            return Global_CreateTimeEventValues(begin_second, CoreUtils.ParseFuncName(type.FullName + "::" + func.Method.Name).ThisPtr, values, save);
+            return Global_CreateTimeEventValues(begin_second, CoreUtils.ParseFuncName(type.FullName + "::" + func.Method.Name), values, save);
         }
         public uint CreateTimeEvent(uint begin_second, string func_name, IList<int> values, bool save)
         {

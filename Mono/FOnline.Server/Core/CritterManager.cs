@@ -58,28 +58,32 @@ namespace FOnline
             return Crit_FromNative(ptr);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Global_SetParameterGetBehaviour(uint index, IntPtr func_name);
+        extern static bool Global_SetParameterGetBehaviour(uint index, string func_name);
         public bool SetParameterGetBehaviour(uint index, Func<IntPtr, uint, int> func)
         {
             var method = func.Method;
             return Global_SetParameterGetBehaviour(index, 
-                CoreUtils.ParseFuncName(method.DeclaringType.FullName + "::" + method.Name).ThisPtr);
+                CoreUtils.ParseFuncName(method.DeclaringType.FullName + "::" + method.Name));
         }
         public bool SetParameterGetBehaviour(uint index, string func_name)
         {
-            return Global_SetParameterGetBehaviour(index, CoreUtils.ParseFuncName(func_name).ThisPtr);
+            if (func_name == null)
+                throw new ArgumentNullException ("func_name");
+            return Global_SetParameterGetBehaviour(index, CoreUtils.ParseFuncName(func_name));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Global_SetParameterChangeBehaviour(uint index, IntPtr func_name);
+        extern static bool Global_SetParameterChangeBehaviour(uint index, string func_name);
         public bool SetParameterChangeBehaviour(uint index, Action<IntPtr, uint, int> func)
         {
             var method = func.Method;
             return Global_SetParameterChangeBehaviour(index,
-                CoreUtils.ParseFuncName(method.DeclaringType.FullName + "::" + method.Name).ThisPtr);
+                CoreUtils.ParseFuncName(method.DeclaringType.FullName + "::" + method.Name));
         }
         public bool SetParameterChangeBehaviour(uint index, string func_name)
         {
-            return Global_SetParameterChangeBehaviour(index, CoreUtils.ParseFuncName(func_name).ThisPtr);
+            if (func_name == null)
+                throw new ArgumentNullException ("func_name");
+            return Global_SetParameterChangeBehaviour(index, CoreUtils.ParseFuncName(func_name));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Global_SetRegistrationParam(uint index, bool enabled);
@@ -143,10 +147,10 @@ namespace FOnline
             Global_SetSendParameter(index, enabled);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Global_SetSendParameterFunc(int index, bool enabled, IntPtr allow_func);
+        extern static void Global_SetSendParameterFunc(int index, bool enabled, string allow_func);
         public void SetSendParameter(int index, bool enabled, string allow_func)
         {
-            Global_SetSendParameterFunc(index, enabled, CoreUtils.ParseFuncName(allow_func).ThisPtr);
+            Global_SetSendParameterFunc(index, enabled, CoreUtils.ParseFuncName(allow_func));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Global_SwapCritters(IntPtr cr1, IntPtr cr2, bool with_inv, bool with_vars);

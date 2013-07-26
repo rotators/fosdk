@@ -27,11 +27,12 @@ namespace FOnline
             return new NpcPlane(NpcPlane_GetChild(thisptr, index));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool NpcPlane_Misc_SetScript(IntPtr thisptr, IntPtr func_name);
+        extern static bool NpcPlane_Misc_SetScript(IntPtr thisptr, string func_name);
         public virtual bool Misc_SetScript(string func_name)
         {
-			var ss = new ScriptString(func_name);
-            return NpcPlane_Misc_SetScript(thisptr, ss.ThisPtr);
+            if (func_name == null)
+                throw new ArgumentNullException ("func_name");
+            return NpcPlane_Misc_SetScript(thisptr, func_name);
         }
 
         /*BIND_ASSERT( engine->RegisterObjectMethod( "NpcPlane", "NpcPlane@ GetCopy() const", asFUNCTION( BIND_CLASS NpcPlane_GetCopy ), asCALL_CDECL_OBJFIRST ) );

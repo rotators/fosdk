@@ -20,23 +20,24 @@ namespace FOnline
 	public class Misc : IMisc
 	{
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static IntPtr Global_GetPlayerName(uint id);
+        extern static string Global_GetPlayerName(uint id);
         public string GetPlayerName(uint id)
         {
-            return new ScriptString(Global_GetPlayerName(id)).ToString();
+            return Global_GetPlayerName(id);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Global_SetBestScore(int score, IntPtr cl, IntPtr name);
+        extern static void Global_SetBestScore(int score, IntPtr cl, string name);
         public void SetBestScore(int score, Critter cl, string name)
         {
-            Global_SetBestScore(score, cl.ThisPtr, new ScriptString(name).ThisPtr);
+            Global_SetBestScore(score, cl.ThisPtr, name);
         }
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		extern static void Global_RadioMessage(ushort channel, IntPtr text);
+		extern static void Global_RadioMessage(ushort channel, string text);
 		public void RadioMessage(ushort channel, string text)
 		{
-			var ss = new ScriptString(text);
-			Global_RadioMessage(channel, ss.ThisPtr);
+            if (text == null)
+                throw new ArgumentNullException ("text");
+			Global_RadioMessage(channel, text);
 		}
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		extern static void Global_RadioMessageMsg(ushort channel, ushort text_msg, uint str_num);
@@ -45,11 +46,10 @@ namespace FOnline
 			Global_RadioMessageMsg(channel, text_msg, str_num);
 		}
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		extern static void Global_RadioMessageMsgLex(ushort channel, ushort text_msg, uint str_num, IntPtr lexems);
+		extern static void Global_RadioMessageMsgLex(ushort channel, ushort text_msg, uint str_num, string lexems);
 		public void RadioMessageMsg(ushort channel, ushort text_msg, uint str_num, string lexems)
 		{
-			var ss = new ScriptString(lexems);
-			Global_RadioMessageMsgLex(channel, text_msg, str_num, ss.ThisPtr);
+			Global_RadioMessageMsgLex(channel, text_msg, str_num, lexems);
 		}
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Global_GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots);
@@ -58,28 +58,34 @@ namespace FOnline
             return Global_GetBagItems(bag_id, pids, min_counts, max_counts, slots);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Global_AddTextListener(int say_type, IntPtr first_str, ushort parameter, IntPtr script_name);
+        extern static bool Global_AddTextListener(int say_type, string first_str, ushort parameter, string script_name);
         public bool AddTextListener(Say say_type, string first_str, ushort parameter, string script_name)
         {
-            return Global_AddTextListener((int)say_type, new ScriptString(first_str).ThisPtr, parameter, CoreUtils.ParseFuncName(script_name).ThisPtr);
+            if (first_str == null)
+                throw new ArgumentNullException ("first_str");
+            if (script_name == null)
+                throw new ArgumentNullException ("script_name");
+            return Global_AddTextListener((int)say_type, first_str, parameter, CoreUtils.ParseFuncName(script_name));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Global_EraseTextListener(int say_type, IntPtr first_str, ushort parameter);
+        extern static bool Global_EraseTextListener(int say_type, string first_str, ushort parameter);
         public void EraseTextListener(Say say_type, string first_str, ushort parameter)
         {
-            Global_EraseTextListener((int)say_type, new ScriptString(first_str).ThisPtr, parameter);
+            if (first_str == null)
+                throw new ArgumentNullException ("first_str");
+            Global_EraseTextListener((int)say_type, first_str, parameter);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetScriptId(IntPtr script_name, IntPtr func_decl);
+        extern static uint Global_GetScriptId(string script_name, string func_decl);
         public uint GetScriptId(string script_name, string func_decl)
         {
-            return Global_GetScriptId(new ScriptString(script_name).ThisPtr, new ScriptString(func_decl).ThisPtr);
+            return Global_GetScriptId(script_name, func_decl);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static IntPtr Global_GetScriptName(uint script_id);
+        extern static string Global_GetScriptName(uint script_id);
         public string GetScriptName(uint script_id)
         {
-            return new ScriptString(Global_GetScriptName(script_id)).ToString();
+            return Global_GetScriptName(script_id);
         }
     }
 }

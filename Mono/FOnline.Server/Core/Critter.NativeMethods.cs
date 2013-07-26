@@ -76,11 +76,10 @@ namespace FOnline
         public virtual AccessType GetAccess() { return (AccessType)Cl_GetAccess(thisptr); } // maybe move to derived Client class?
         
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Crit_SetLexems(IntPtr thisptr, IntPtr lexems);
+        extern static void Crit_SetLexems(IntPtr thisptr, string lexems);
         public virtual void SetLexems(string lexems)
         {
-			var ss = new ScriptString(lexems);
-            Crit_SetLexems(thisptr, ss.ThisPtr);
+            Crit_SetLexems(thisptr, lexems);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static IntPtr Crit_GetMap(IntPtr thisptr);
@@ -455,16 +454,16 @@ namespace FOnline
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Crit_Say(IntPtr thisptr, byte how_say, IntPtr text);
+        extern static void Crit_Say(IntPtr thisptr, byte how_say, string text);
         public virtual void Say(Say how_say, string text)
         {
-			var ss = new ScriptString(text);
-            Crit_Say(thisptr, (byte)how_say, ss.ThisPtr);
+            if (text == null)
+                throw new ArgumentNullException ("text");
+            Crit_Say(thisptr, (byte)how_say, text);
         }
         public virtual void Say(Say how_say, string text, params object[] args)
         {
-			var ss = new ScriptString(string.Format(text, args));
-            Crit_Say(thisptr, (byte)how_say, ss.ThisPtr);
+            Crit_Say(thisptr, (byte)how_say, string.Format(text, args));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Crit_SayMsg(IntPtr thisptr, byte how_say, ushort text_msg, uint str_num);
@@ -473,11 +472,10 @@ namespace FOnline
             Crit_SayMsg(thisptr, (byte)how_say, text_msg, str_num);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Crit_SayMsgLex(IntPtr thisptr, byte how_say, ushort text_msg, uint str_num, IntPtr lexems);
+        extern static void Crit_SayMsgLex(IntPtr thisptr, byte how_say, ushort text_msg, uint str_num, string lexems);
         public virtual void SayMsg(Say how_say, ushort text_msg, uint str_num, string lexems)
         {
-			var ss = new ScriptString(lexems);
-            Crit_SayMsgLex(thisptr, (byte)how_say, text_msg, str_num, ss.ThisPtr);
+            Crit_SayMsgLex(thisptr, (byte)how_say, text_msg, str_num, lexems);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Crit_SetDir(IntPtr thisptr, byte dir);
@@ -572,11 +570,12 @@ namespace FOnline
             Crit_SetAnims(thisptr, cond, anim1, anim2);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Crit_PlaySound(IntPtr thisptr, IntPtr sound_name, bool send_self);
+        extern static void Crit_PlaySound(IntPtr thisptr, string sound_name, bool send_self);
         public virtual void PlaySound(string sound_name, bool send_self)
         {
-			var ss = new ScriptString(sound_name);
-            Crit_PlaySound(thisptr, ss.ThisPtr, send_self);
+            if (sound_name == null)
+                throw new ArgumentNullException ("sound_name");
+            Crit_PlaySound(thisptr, sound_name, send_self);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Crit_PlaySoundType(IntPtr thisptr, byte sound_type, byte sound_type_ext, byte sound_id, byte sound_id_ext, bool send_self);
@@ -628,21 +627,18 @@ namespace FOnline
         extern static void Cl_ShowContainer(IntPtr thisptr, IntPtr cont_cr, IntPtr cont_item, uint transfer_type);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Cl_ShowScreen(IntPtr thisptr, int screen_type, uint param, IntPtr func_name);
+        extern static void Cl_ShowScreen(IntPtr thisptr, int screen_type, uint param, string func_name);
         public virtual void ShowScreen(Screen screen_type, uint param, string func_name)
         {
-			var ss = new ScriptString(func_name);
-            Cl_ShowScreen(thisptr, (int)screen_type, param, ss.ThisPtr);
+            Cl_ShowScreen(thisptr, (int)screen_type, param, func_name);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Cl_RunClientScript(IntPtr thisptr, IntPtr func_name, int p0, int p1, int p2, IntPtr p3, int[] p4);
+        extern static void Cl_RunClientScript(IntPtr thisptr, string func_name, int p0, int p1, int p2, string p3, int[] p4);
         public virtual void RunClientScript(string func_name, int p0, int p1, int p2, string p3, int[] p4)
         {
-			var func_name_ = new ScriptString(func_name);
-			var p3_ = p3 != null ? new ScriptString(p3) : null;
-            Cl_RunClientScript(thisptr, func_name_.ThisPtr, p0, p1, p2, 
-                p3_ != null ? p3_.ThisPtr : IntPtr.Zero,
-                p4);
+            if (func_name == null)
+                throw new ArgumentNullException ("func_name");
+            Cl_RunClientScript (thisptr, func_name, p0, p1, p2, p3, p4);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Cl_Disconnect(IntPtr thisptr);
@@ -652,11 +648,10 @@ namespace FOnline
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Crit_SetScript(IntPtr thisptr, IntPtr script);
+        extern static bool Crit_SetScript(IntPtr thisptr, string script);
         public virtual bool SetScript(string script)
         {
-			var ss = new ScriptString(script);
-            return Crit_SetScript(thisptr, ss.ThisPtr);
+            return Crit_SetScript(thisptr, script);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Crit_GetScriptId(IntPtr thisptr);
@@ -772,24 +767,26 @@ namespace FOnline
         public delegate uint CritterTimeEventHandler(IntPtr cr_ptr, int identifier, ref uint rate);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Crit_AddTimeEvent(IntPtr thisptr, IntPtr func_name, uint duration, int identifier);
+        extern static bool Crit_AddTimeEvent(IntPtr thisptr, string func_name, uint duration, int identifier);
         public virtual bool AddTimeEvent(string func_name, uint duration, int identifier)
         {
-            return Crit_AddTimeEvent(thisptr, CoreUtils.ParseFuncName(func_name).ThisPtr, duration, identifier);
+            if (func_name == null)
+                throw new ArgumentNullException ("func_name");
+            return Crit_AddTimeEvent(thisptr, CoreUtils.ParseFuncName(func_name), duration, identifier);
         }
         public virtual bool AddTimeEvent(CritterTimeEventHandler cte, uint duration, int identifier)
         {
-            return Crit_AddTimeEvent(thisptr, CoreUtils.ParseFuncName(cte).ThisPtr, duration, identifier);
+            return Crit_AddTimeEvent(thisptr, CoreUtils.ParseFuncName(cte), duration, identifier);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Crit_AddTimeEventRate(IntPtr thisptr, IntPtr func_name, uint duration, int identifier, uint rate);
+        extern static bool Crit_AddTimeEventRate(IntPtr thisptr, string func_name, uint duration, int identifier, uint rate);
         public virtual bool AddTimeEvent(string func_name, uint duration, int identifier, uint rate)
         {
-            return Crit_AddTimeEventRate(thisptr, CoreUtils.ParseFuncName(func_name).ThisPtr, duration, identifier, rate);
+            return Crit_AddTimeEventRate(thisptr, CoreUtils.ParseFuncName(func_name), duration, identifier, rate);
         }
         public virtual bool AddTimeEvent(CritterTimeEventHandler cte, uint duration, int identifier, uint rate)
         {
-            return Crit_AddTimeEventRate(thisptr, CoreUtils.ParseFuncName(cte).ThisPtr, duration, identifier, rate); 
+            return Crit_AddTimeEventRate(thisptr, CoreUtils.ParseFuncName(cte), duration, identifier, rate); 
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Crit_GetTimeEvents(IntPtr thisptr, int identifier, IList<uint> indexes, IList<uint> durations, IList<uint> rates);

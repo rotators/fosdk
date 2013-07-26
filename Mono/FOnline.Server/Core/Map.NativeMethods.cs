@@ -41,11 +41,10 @@ namespace FOnline
             get { return new Location(Map_GetLocation(thisptr)); }
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Map_SetScript(IntPtr thisptr, IntPtr script);
+        extern static bool Map_SetScript(IntPtr thisptr, string script);
         public virtual bool SetScript(string script)
         {
-			var ss = new ScriptString(script);
-            return Map_SetScript(thisptr, ss.ThisPtr);
+            return Map_SetScript(thisptr, script);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Map_GetScriptId(IntPtr thisptr);
@@ -337,10 +336,10 @@ namespace FOnline
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static IntPtr Map_AddNpc(IntPtr thisptr, ushort pid, ushort hx, ushort hy, byte dir, IList<int> _params, IList<int> items, IntPtr script);
+        extern static IntPtr Map_AddNpc(IntPtr thisptr, ushort pid, ushort hx, ushort hy, byte dir, IList<int> _params, IList<int> items, string script);
         public virtual Critter AddNpc(ushort pid, ushort hx, ushort hy, Direction dir, IList<int> parameters, IList<int> items, string script)
         {
-            return (Critter)Map_AddNpc(thisptr, pid, hx, hy, (byte)dir, parameters, items, (IntPtr)((ScriptString)script));
+            return (Critter)Map_AddNpc(thisptr, pid, hx, hy, (byte)dir, parameters, items, script);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Map_GetNpcCount(IntPtr thisptr, int npc_role, int find_type);
@@ -412,11 +411,12 @@ namespace FOnline
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Map_SetText(IntPtr thisptr, ushort hx, ushort hy, uint color, IntPtr text);
+        extern static void Map_SetText(IntPtr thisptr, ushort hx, ushort hy, uint color, string text);
         public virtual void SetText(ushort hx, ushort hy, uint color, string text)
         {
-			var ss = new ScriptString(text);
-            Map_SetText(thisptr, hx, hy, color, ss.ThisPtr);
+            if (text == null)
+                throw new ArgumentNullException ("text");
+            Map_SetText(thisptr, hx, hy, color, text);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Map_SetTextMsg(IntPtr thisptr, ushort hx, ushort hy, uint color, ushort text_msg, uint str_num);
@@ -425,11 +425,12 @@ namespace FOnline
             Map_SetTextMsg(thisptr, hx, hy, color, text_msg, str_num);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Map_SetTextMsgLex(IntPtr thisptr, ushort hx, ushort hy, uint color, ushort text_msg, uint str_num, IntPtr lexems);
+        extern static void Map_SetTextMsgLex(IntPtr thisptr, ushort hx, ushort hy, uint color, ushort text_msg, uint str_num, string lexems);
         public virtual void SetTextMsgLex(ushort hx, ushort hy, uint color, ushort text_msg, uint str_num, string lexems)
         {
-			var ss = new ScriptString(lexems);
-            Map_SetTextMsgLex(thisptr, hx, hy, color, text_msg, str_num, ss.ThisPtr);
+            if (lexems == null)
+                throw new ArgumentNullException ("lexems");
+            Map_SetTextMsgLex(thisptr, hx, hy, color, text_msg, str_num, lexems);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Map_RunEffect(IntPtr thisptr, ushort pid, ushort hx, ushort hy, ushort radius);
@@ -464,18 +465,20 @@ namespace FOnline
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Map_PlaySound(IntPtr thisptr, IntPtr sound_name);
+        extern static void Map_PlaySound(IntPtr thisptr, string sound_name);
         public virtual void PlaySound(string sound_name)
         {
-			var ss = new ScriptString(sound_name);
-            Map_PlaySound(thisptr, ss.ThisPtr);
+            if (sound_name == null)
+                throw new ArgumentNullException ("sound_name");
+            Map_PlaySound(thisptr, sound_name);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Map_PlaySoundRadius(IntPtr thisptr, IntPtr sound_name, ushort hx, ushort hy, uint radius);
+        extern static void Map_PlaySoundRadius(IntPtr thisptr, string sound_name, ushort hx, ushort hy, uint radius);
         public virtual void PlaySound(string sound_name, ushort hx, ushort hy, uint radius)
         {
-			var ss = new ScriptString(sound_name);
-            Map_PlaySoundRadius(thisptr, ss.ThisPtr, hx, hy, radius);
+            if (sound_name == null)
+                throw new ArgumentNullException ("sound_name");
+            Map_PlaySoundRadius(thisptr, sound_name, hx, hy, radius);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]

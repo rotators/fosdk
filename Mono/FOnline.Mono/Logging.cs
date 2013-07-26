@@ -15,22 +15,24 @@ namespace FOnline
     public class Logging : ILogging
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Global_Log(IntPtr s);
-        public void Log(string s)
+        extern static void Global_Log(string s);
+        public void Log(string msg)
         {
-			var ss = new ScriptString(s + Environment.NewLine);
-            Global_Log(ss.ThisPtr);
+            if (msg == null)
+                throw new ArgumentNullException ("msg");
+            Global_Log(msg + Environment.NewLine);
         }
-        public void Log(string s, params object[] args)
+        public void Log(string msg, params object[] args)
         {
-			var ss = new ScriptString(string.Format(s + Environment.NewLine, args));
-            Global_Log(ss.ThisPtr);
+            if (msg == null)
+                throw new ArgumentNullException ("msg");
+            Global_Log(string.Format(msg + Environment.NewLine, args));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern IntPtr Global_GetLastError();
+        extern string Global_GetLastError();
         public string GetLastError()
         {
-            return new ScriptString(Global_GetLastError()).ToString();
+            return Global_GetLastError();
         }
     }
 }

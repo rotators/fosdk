@@ -22,8 +22,7 @@ namespace FOnline
         }
         public static void asAssert(bool cond, IntPtr msg)
         {
-            var ss = new ScriptString(msg);
-            Assert(cond, ss.ToString());
+            throw new NotSupportedException ();
         }
         public static void InitRun()
         {
@@ -350,11 +349,7 @@ CFoo@ GetNull() { return null; }
             assert (module.SomeTest(2), "Calling func returning true");
             assert (!module.SomeTest(3), "Calling func returning false");
             assert (module.Square(1.2f) == 1.44f, "Calling float function");
-            
-            var s = new ScriptString("hello");
-            assert (module.RefFunc(s) == 5, "Calling byref function");
-            assert (module.HandleFunc(s) == 5, "Calling handle function");
-            
+           
             assert (module.GetAsInterface(2) != null, "Calling function returning script object");
             assert(module.GetNull() == null, "Caling null returning function");
         }

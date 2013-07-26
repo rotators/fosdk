@@ -127,11 +127,10 @@ namespace FOnline
             Item_Animate(thisptr, from_frame, to_frame);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Item_SetLexems(IntPtr thisptr, IntPtr lexems);
+        extern static void Item_SetLexems(IntPtr thisptr, string lexems);
         public virtual void SetLexems(string lexems)
         {
-			var ss = new ScriptString(lexems);
-            Item_SetLexems(thisptr, ss.ThisPtr);
+            Item_SetLexems(thisptr, lexems);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]

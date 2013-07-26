@@ -39,11 +39,6 @@ namespace FOnline.AngelScript
 		{
 			TypeActivators[ScriptEngine.GetTypeIdByDecl(typedecl)] = activator;
 		}*/
-		static ScriptObjectType()
-		{
-			Func<string, int> get_tid = d => ScriptEngine.GetTypeIdByDecl(d);
-			TypeActivators[get_tid("string")] = ptr => new ScriptString(ptr);
-		}
 		public static object Instantiate(IntPtr ptr, int tid)
 		{
 			Func<IntPtr, object> activator = null;
