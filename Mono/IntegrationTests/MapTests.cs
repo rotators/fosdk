@@ -66,6 +66,18 @@ namespace IntegrationTests
                 }
             });
         }*/
+        [Test]
+        public static void MapProperties()
+        {
+            Test.OnMap ("Reading map id", map =>
+            {
+                Test.OnMap ("Reading map id", map2 =>
+                {
+                    return map2.Id == map.Id + 1;
+                });
+                return true;
+            });
+        }
     }
 }
 
