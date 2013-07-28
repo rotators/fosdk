@@ -56,8 +56,7 @@ namespace FOnline
         {
             get { return Map_GetScriptId(thisptr); }
         }
-        //[MethodImpl(MethodImplOptions.InternalCall)]
-        //extern static bool Map_SetEvent(IntPtr thisptr, int event_type, IntPtr func_name);
+
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Map_SetLoopTime(IntPtr thisptr, uint num_loop, uint ms);
         public virtual void SetLoopTime(uint num_loop, uint ms)

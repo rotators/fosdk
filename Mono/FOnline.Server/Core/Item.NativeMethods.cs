@@ -28,11 +28,7 @@ namespace FOnline
         extern static bool Item_SetScript(IntPtr thisptr, IntPtr script);
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Item_GetScriptId(IntPtr thisptr);
-
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Item_SetEvent(IntPtr thisptr, int event_type, IntPtr func_name);
-        // not allowed?
-
+        
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static byte Item_GetType(IntPtr thisptr);
         public new virtual byte GetType()
