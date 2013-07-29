@@ -1,118 +1,252 @@
 using System;
+using System.Runtime.CompilerServices;
+
 namespace FOnline
 {
     public partial class Item
     {
-        public virtual UInt32 Id { get { return NativeFields.GetUInt32(thisptr, offsetId); }}
-        public virtual ProtoItem Proto { get { return (ProtoItem)NativeFields.GetIntPtr(thisptr, offsetProto); }}
-        public virtual Accessory Accessory { get { return (Accessory)NativeFields.GetByte(thisptr, offsetAccessory); }}
-        public virtual UInt32 MapId { get { return NativeFields.GetUInt32(thisptr, offsetMapId); }}
-        public virtual UInt16 HexX { get { return NativeFields.GetUInt16(thisptr, offsetHexX); }}
-        public virtual UInt16 HexY { get { return NativeFields.GetUInt16(thisptr, offsetHexY); }}
-        public virtual UInt32 CritId { get { return NativeFields.GetUInt32(thisptr, offsetCritId); }}
-        public virtual Byte CritSlot { get { return NativeFields.GetByte(thisptr, offsetCritSlot); }}
-        public virtual UInt32 ContainerId { get { return NativeFields.GetUInt32(thisptr, offsetContainerId); }}
-        public virtual UInt32 StackId { get { return NativeFields.GetUInt32(thisptr, offsetStackId); }}
-        public virtual Boolean IsNotValid { get { return NativeFields.GetBoolean(thisptr, offsetIsNotValid); }}
-        public virtual Byte Mode { get { return NativeFields.GetByte(thisptr, offsetMode); }}
-        public virtual UInt16 SortValue { get { return NativeFields.GetUInt16(thisptr, offsetSortValue); } set { NativeFields.SetUInt16(thisptr, offsetSortValue, value); }}
-        public virtual Byte Info { get { return NativeFields.GetByte(thisptr, offsetInfo); } set { NativeFields.SetByte(thisptr, offsetInfo, value); }}
-        public virtual UInt32 PicMap { get { return NativeFields.GetUInt32(thisptr, offsetPicMap); } set { NativeFields.SetUInt32(thisptr, offsetPicMap, value); }}
-        public virtual UInt32 PicInv { get { return NativeFields.GetUInt32(thisptr, offsetPicInv); } set { NativeFields.SetUInt32(thisptr, offsetPicInv, value); }}
-        public virtual UInt16 AnimWaitBase { get { return NativeFields.GetUInt16(thisptr, offsetAnimWaitBase); } set { NativeFields.SetUInt16(thisptr, offsetAnimWaitBase, value); }}
-        public virtual Byte AnimStayBegin { get { return NativeFields.GetByte(thisptr, offsetAnimStayBegin); } set { NativeFields.SetByte(thisptr, offsetAnimStayBegin, value); }}
-        public virtual Byte AnimStayEnd { get { return NativeFields.GetByte(thisptr, offsetAnimStayEnd); } set { NativeFields.SetByte(thisptr, offsetAnimStayEnd, value); }}
-        public virtual Byte AnimShowBegin { get { return NativeFields.GetByte(thisptr, offsetAnimShowBegin); } set { NativeFields.SetByte(thisptr, offsetAnimShowBegin, value); }}
-        public virtual Byte AnimShowEnd { get { return NativeFields.GetByte(thisptr, offsetAnimShowEnd); } set { NativeFields.SetByte(thisptr, offsetAnimShowEnd, value); }}
-        public virtual Byte AnimHideBegin { get { return NativeFields.GetByte(thisptr, offsetAnimHideBegin); } set { NativeFields.SetByte(thisptr, offsetAnimHideBegin, value); }}
-        public virtual Byte AnimHideEnd { get { return NativeFields.GetByte(thisptr, offsetAnimHideEnd); } set { NativeFields.SetByte(thisptr, offsetAnimHideEnd, value); }}
-        public virtual UInt32 Cost { get { return NativeFields.GetUInt32(thisptr, offsetCost); } set { NativeFields.SetUInt32(thisptr, offsetCost, value); }}
-        public virtual Int32 Val0 { get { return NativeFields.GetInt32(thisptr, offsetVal0); } set { NativeFields.SetInt32(thisptr, offsetVal0, value); }}
-        public virtual Int32 Val1 { get { return NativeFields.GetInt32(thisptr, offsetVal1); } set { NativeFields.SetInt32(thisptr, offsetVal1, value); }}
-        public virtual Int32 Val2 { get { return NativeFields.GetInt32(thisptr, offsetVal2); } set { NativeFields.SetInt32(thisptr, offsetVal2, value); }}
-        public virtual Int32 Val3 { get { return NativeFields.GetInt32(thisptr, offsetVal3); } set { NativeFields.SetInt32(thisptr, offsetVal3, value); }}
-        public virtual Int32 Val4 { get { return NativeFields.GetInt32(thisptr, offsetVal4); } set { NativeFields.SetInt32(thisptr, offsetVal4, value); }}
-        public virtual Int32 Val5 { get { return NativeFields.GetInt32(thisptr, offsetVal5); } set { NativeFields.SetInt32(thisptr, offsetVal5, value); }}
-        public virtual Int32 Val6 { get { return NativeFields.GetInt32(thisptr, offsetVal6); } set { NativeFields.SetInt32(thisptr, offsetVal6, value); }}
-        public virtual Int32 Val7 { get { return NativeFields.GetInt32(thisptr, offsetVal7); } set { NativeFields.SetInt32(thisptr, offsetVal7, value); }}
-        public virtual Int32 Val8 { get { return NativeFields.GetInt32(thisptr, offsetVal8); } set { NativeFields.SetInt32(thisptr, offsetVal8, value); }}
-        public virtual Int32 Val9 { get { return NativeFields.GetInt32(thisptr, offsetVal9); } set { NativeFields.SetInt32(thisptr, offsetVal9, value); }}
-        public virtual SByte LightIntensity { get { return NativeFields.GetSByte(thisptr, offsetLightIntensity); } set { NativeFields.SetSByte(thisptr, offsetLightIntensity, value); }}
-        public virtual Byte LightDistance { get { return NativeFields.GetByte(thisptr, offsetLightDistance); } set { NativeFields.SetByte(thisptr, offsetLightDistance, value); }}
-        public virtual Byte LightFlags { get { return NativeFields.GetByte(thisptr, offsetLightFlags); } set { NativeFields.SetByte(thisptr, offsetLightFlags, value); }}
-        public virtual UInt32 LightColor { get { return NativeFields.GetUInt32(thisptr, offsetLightColor); } set { NativeFields.SetUInt32(thisptr, offsetLightColor, value); }}
-        public virtual Byte Indicator { get { return NativeFields.GetByte(thisptr, offsetIndicator); } set { NativeFields.SetByte(thisptr, offsetIndicator, value); }}
-        public virtual BI BrokenFlags { get { return (BI)NativeFields.GetByte(thisptr, offsetBrokenFlags); } set { NativeFields.SetByte(thisptr, offsetBrokenFlags, (Byte)value); }}
-        public virtual Byte BrokenCount { get { return NativeFields.GetByte(thisptr, offsetBrokenCount); } set { NativeFields.SetByte(thisptr, offsetBrokenCount, value); }}
-        public virtual UInt16 Deterioration { get { return NativeFields.GetUInt16(thisptr, offsetDeterioration); } set { NativeFields.SetUInt16(thisptr, offsetDeterioration, value); }}
-        //public virtual UInt16 WeaponAmmoPid { get { return NativeFields.GetUInt16(thisptr, offsetWeaponAmmoPid); } set { NativeFields.SetUInt16(thisptr, offsetWeaponAmmoPid, value); }}
-        public virtual UInt16 AmmoCount { get { return NativeFields.GetUInt16(thisptr, offsetAmmoCount); } set { NativeFields.SetUInt16(thisptr, offsetAmmoCount, value); }}
-        public virtual UInt32 LockerId { get { return NativeFields.GetUInt32(thisptr, offsetLockerId); } set { NativeFields.SetUInt32(thisptr, offsetLockerId, value); }}
-        public virtual UInt16 LockerCondition { get { return NativeFields.GetUInt16(thisptr, offsetLockerCondition); } set { NativeFields.SetUInt16(thisptr, offsetLockerCondition, value); }}
-        public virtual UInt16 LockerComplexity { get { return NativeFields.GetUInt16(thisptr, offsetLockerComplexity); } set { NativeFields.SetUInt16(thisptr, offsetLockerComplexity, value); }}
-        //public virtual UInt16 CarFuel { get { return NativeFields.GetUInt16(thisptr, offsetCarFuel); } set { NativeFields.SetUInt16(thisptr, offsetCarFuel, value); }}
-        //public virtual UInt16 CarDeterioration { get { return NativeFields.GetUInt16(thisptr, offsetCarDeterioration); } set { NativeFields.SetUInt16(thisptr, offsetCarDeterioration, value); }}
-        public virtual UInt16 RadioChannel { get { return NativeFields.GetUInt16(thisptr, offsetRadioChannel); } set { NativeFields.SetUInt16(thisptr, offsetRadioChannel, value); }}
-        public virtual UInt16 RadioFlags { get { return NativeFields.GetUInt16(thisptr, offsetRadioFlags); } set { NativeFields.SetUInt16(thisptr, offsetRadioFlags, value); }}
-        public virtual Byte RadioBroadcastSend { get { return NativeFields.GetByte(thisptr, offsetRadioBroadcastSend); } set { NativeFields.SetByte(thisptr, offsetRadioBroadcastSend, value); }}
-        public virtual Byte RadioBroadcastRecv { get { return NativeFields.GetByte(thisptr, offsetRadioBroadcastRecv); } set { NativeFields.SetByte(thisptr, offsetRadioBroadcastRecv, value); }}
-        public virtual UInt32 HolodiskNumber { get { return NativeFields.GetUInt32(thisptr, offsetHolodiskNumber); } set { NativeFields.SetUInt32(thisptr, offsetHolodiskNumber, value); }}
+        public virtual UInt32 Id { get { return GetId(thisptr); }}
+        public virtual ProtoItem Proto { get { return (ProtoItem)GetProto(thisptr); }}
+        public virtual Accessory Accessory { get { return (Accessory)GetAccessory(thisptr); }}
+        public virtual UInt32 MapId { get { return GetMapId(thisptr); }}
+        public virtual UInt16 HexX { get { return GetHexX(thisptr); }}
+        public virtual UInt16 HexY { get { return GetHexY(thisptr); }}
+        public virtual UInt32 CritId { get { return GetCritId(thisptr); }}
+        public virtual Byte CritSlot { get { return GetCritSlot(thisptr); }}
+        public virtual UInt32 ContainerId { get { return GetContainerId(thisptr); }}
+        public virtual UInt32 StackId { get { return GetStackId(thisptr); }}
+        public virtual Boolean IsNotValid { get { return GetIsNotValid(thisptr); }}
+        public virtual Byte Mode { get { return GetMode(thisptr); }}
+        public virtual UInt16 SortValue { get { return GetSortValue(thisptr); } set { SetSortValue(thisptr, value); }}
+        public virtual Byte Info { get { return GetInfo(thisptr); } set { SetInfo(thisptr, value); }}
+        public virtual UInt32 PicMap { get { return GetPicMap(thisptr); } set { SetPicMap(thisptr, value); }}
+        public virtual UInt32 PicInv { get { return GetPicInv(thisptr); } set { SetPicInv(thisptr, value); }}
+        public virtual UInt16 AnimWaitBase { get { return GetAnimWaitBase(thisptr); } set { SetAnimWaitBase(thisptr, value); }}
+        public virtual Byte AnimStayBegin { get { return GetAnimStayBegin(thisptr); } set { SetAnimStayBegin(thisptr, value); }}
+        public virtual Byte AnimStayEnd { get { return GetAnimStayEnd(thisptr); } set { SetAnimStayEnd(thisptr, value); }}
+        public virtual Byte AnimShowBegin { get { return GetAnimShowBegin(thisptr); } set { SetAnimShowBegin(thisptr, value); }}
+        public virtual Byte AnimShowEnd { get { return GetAnimShowEnd(thisptr); } set { SetAnimShowEnd(thisptr, value); }}
+        public virtual Byte AnimHideBegin { get { return GetAnimHideBegin(thisptr); } set { SetAnimHideBegin(thisptr, value); }}
+        public virtual Byte AnimHideEnd { get { return GetAnimHideEnd(thisptr); } set { SetAnimHideEnd(thisptr, value); }}
+        public virtual UInt32 Cost { get { return _GetCost(thisptr); } set { SetCost(thisptr, value); }}
+        public virtual Int32 Val0 { get { return GetVal0(thisptr); } set { SetVal0(thisptr, value); }}
+        public virtual Int32 Val1 { get { return GetVal1(thisptr); } set { SetVal1(thisptr, value); }}
+        public virtual Int32 Val2 { get { return GetVal2(thisptr); } set { SetVal2(thisptr, value); }}
+        public virtual Int32 Val3 { get { return GetVal3(thisptr); } set { SetVal3(thisptr, value); }}
+        public virtual Int32 Val4 { get { return GetVal4(thisptr); } set { SetVal4(thisptr, value); }}
+        public virtual Int32 Val5 { get { return GetVal5(thisptr); } set { SetVal5(thisptr, value); }}
+        public virtual Int32 Val6 { get { return GetVal6(thisptr); } set { SetVal6(thisptr, value); }}
+        public virtual Int32 Val7 { get { return GetVal7(thisptr); } set { SetVal7(thisptr, value); }}
+        public virtual Int32 Val8 { get { return GetVal8(thisptr); } set { SetVal8(thisptr, value); }}
+        public virtual Int32 Val9 { get { return GetVal9(thisptr); } set { SetVal9(thisptr, value); }}
+        public virtual SByte LightIntensity { get { return GetLightIntensity(thisptr); } set { SetLightIntensity(thisptr, value); }}
+        public virtual Byte LightDistance { get { return GetLightDistance(thisptr); } set { SetLightDistance(thisptr, value); }}
+        public virtual Byte LightFlags { get { return GetLightFlags(thisptr); } set { SetLightFlags(thisptr, value); }}
+        public virtual UInt32 LightColor { get { return GetLightColor(thisptr); } set { SetLightColor(thisptr, value); }}
+        public virtual Byte Indicator { get { return GetIndicator(thisptr); } set { SetIndicator(thisptr, value); }}
+        public virtual BI BrokenFlags { get { return (BI)GetBrokenFlags(thisptr); } set { SetBrokenFlags(thisptr, (Byte)value); }}
+        public virtual Byte BrokenCount { get { return GetBrokenCount(thisptr); } set { SetBrokenCount(thisptr, value); }}
+        public virtual UInt16 Deterioration { get { return GetDeterioration(thisptr); } set { SetDeterioration(thisptr, value); }}
+        public virtual UInt16 AmmoPid { get { return GetAmmoPid(thisptr); } set { SetAmmoPid(thisptr, value); }}
+        public virtual UInt16 AmmoCount { get { return GetAmmoCount(thisptr); } set { SetAmmoCount(thisptr, value); }}
+        public virtual UInt32 LockerId { get { return GetLockerId(thisptr); } set { SetLockerId(thisptr, value); }}
+        public virtual UInt16 LockerCondition { get { return GetLockerCondition(thisptr); } set { SetLockerCondition(thisptr, value); }}
+        public virtual UInt16 LockerComplexity { get { return GetLockerComplexity(thisptr); } set { SetLockerComplexity(thisptr, value); }}
+        public virtual UInt16 RadioChannel { get { return GetRadioChannel(thisptr); } set { SetRadioChannel(thisptr, value); }}
+        public virtual UInt16 RadioFlags { get { return GetRadioFlags(thisptr); } set { SetRadioFlags(thisptr, value); }}
+        public virtual Byte RadioBroadcastSend { get { return GetRadioBroadcastSend(thisptr); } set { SetRadioBroadcastSend(thisptr, value); }}
+        public virtual Byte RadioBroadcastRecv { get { return GetRadioBroadcastRecv(thisptr); } set { SetRadioBroadcastRecv(thisptr, value); }}
+        public virtual UInt32 HolodiskNumber { get { return GetHolodiskNumber(thisptr); } set { SetHolodiskNumber(thisptr, value); }}
 
-#pragma warning disable 649
-	    static int offsetId;
-        static int offsetProto;
-        static int offsetAccessory;
-        static int offsetMapId;
-        static int offsetHexX;
-        static int offsetHexY;
-        static int offsetCritId;
-        static int offsetCritSlot;
-        static int offsetContainerId;
-        static int offsetStackId;
-        static int offsetIsNotValid;
-        static int offsetMode;
-        static int offsetSortValue;
-        static int offsetInfo;
-        static int offsetPicMap;
-        static int offsetPicInv;
-        static int offsetAnimWaitBase;
-        static int offsetAnimStayBegin;
-        static int offsetAnimStayEnd;
-        static int offsetAnimShowBegin;
-        static int offsetAnimShowEnd;
-        static int offsetAnimHideBegin;
-        static int offsetAnimHideEnd;
-        static int offsetCost;
-        static int offsetVal0;
-        static int offsetVal1;
-        static int offsetVal2;
-        static int offsetVal3;
-        static int offsetVal4;
-        static int offsetVal5;
-        static int offsetVal6;
-        static int offsetVal7;
-        static int offsetVal8;
-        static int offsetVal9;
-        static int offsetLightIntensity;
-        static int offsetLightDistance;
-        static int offsetLightFlags;
-        static int offsetLightColor;
-        static int offsetIndicator;
-        static int offsetBrokenFlags;
-        static int offsetBrokenCount;
-        static int offsetDeterioration;
-        //static int offsetWeaponAmmoPid;
-        static int offsetAmmoCount;
-        static int offsetLockerId;
-        static int offsetLockerCondition;
-        static int offsetLockerComplexity;
-        //static int offsetCarFuel;
-        //static int offsetCarDeterioration;
-        static int offsetRadioChannel;
-        static int offsetRadioFlags;
-        static int offsetRadioBroadcastSend;
-        static int offsetRadioBroadcastRecv;
-        static int offsetHolodiskNumber;
-#pragma warning restore 649
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetId(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static IntPtr GetProto(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetAccessory(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetMapId(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetHexX(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetHexY(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetCritId(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetCritSlot(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetContainerId(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetStackId(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static Boolean GetIsNotValid(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetMode(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetSortValue(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetSortValue(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetInfo(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetInfo(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetPicMap(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetPicMap(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetPicInv(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetPicInv(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetAnimWaitBase(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAnimWaitBase(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetAnimStayBegin(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAnimStayBegin(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetAnimStayEnd(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAnimStayEnd(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetAnimShowBegin(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAnimShowBegin(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetAnimShowEnd(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAnimShowEnd(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetAnimHideBegin(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAnimHideBegin(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetAnimHideEnd(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAnimHideEnd(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint _GetCost(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetCost(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal0(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal0(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal1(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal1(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal2(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal2(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal3(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal3(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal4(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal4(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal5(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal5(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal6(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal6(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal7(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal7(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal8(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal8(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetVal9(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVal9(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static sbyte GetLightIntensity(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetLightIntensity(IntPtr ptr, sbyte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetLightDistance(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetLightDistance(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetLightFlags(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetLightFlags(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetLightColor(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetLightColor(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetIndicator(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetIndicator(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetBrokenFlags(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetBrokenFlags(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetBrokenCount(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetBrokenCount(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetDeterioration(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetDeterioration(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetAmmoPid(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAmmoPid(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetAmmoCount(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAmmoCount(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetLockerId(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetLockerId(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetLockerCondition(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetLockerCondition(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetLockerComplexity(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetLockerComplexity(IntPtr ptr, ushort val);
+        //ushort GetCarFuel(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetCarFuel(IntPtr ptr, ushort val);
+        //ushort GetCarDeterioration(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetCarDeterioration(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetRadioChannel(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetRadioChannel(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetRadioFlags(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetRadioFlags(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetRadioBroadcastSend(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetRadioBroadcastSend(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetRadioBroadcastRecv(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetRadioBroadcastRecv(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetHolodiskNumber(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetHolodiskNumber(IntPtr ptr, uint val);
 	}
 }
