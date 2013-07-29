@@ -1,30 +1,57 @@
 using System;
+using System.Runtime.CompilerServices;
+
 namespace FOnline
 {
     public partial class Location
     {
-        public virtual UInt32 Id { get { return NativeFields.GetUInt32(thisptr, offsetId); }}
-        public virtual UInt16 WorldX { get { return NativeFields.GetUInt16(thisptr, offsetWorldX); } set { NativeFields.SetUInt16(thisptr, offsetWorldX, value); }}
-        public virtual UInt16 WorldY { get { return NativeFields.GetUInt16(thisptr, offsetWorldY); } set { NativeFields.SetUInt16(thisptr, offsetWorldY, value); }}
-        public virtual Boolean Visible { get { return NativeFields.GetBoolean(thisptr, offsetVisible); } set { NativeFields.SetBoolean(thisptr, offsetVisible, value); }}
-        public virtual Boolean GeckVisible { get { return NativeFields.GetBoolean(thisptr, offsetGeckVisible); } set { NativeFields.SetBoolean(thisptr, offsetGeckVisible, value); }}
-        public virtual Boolean AutoGarbage { get { return NativeFields.GetBoolean(thisptr, offsetAutoGarbage); } set { NativeFields.SetBoolean(thisptr, offsetAutoGarbage, value); }}
-        public virtual Int32 GeckCount { get { return NativeFields.GetInt32(thisptr, offsetGeckCount); } set { NativeFields.SetInt32(thisptr, offsetGeckCount, value); }}
-        public virtual UInt16 Radius { get { return NativeFields.GetUInt16(thisptr, offsetRadius); } set { NativeFields.SetUInt16(thisptr, offsetRadius, value); }}
-        public virtual UInt32 Color { get { return NativeFields.GetUInt32(thisptr, offsetColor); } set { NativeFields.SetUInt32(thisptr, offsetColor, value); }}
-        public virtual Boolean IsNotValid { get { return NativeFields.GetBoolean(thisptr, offsetIsNotValid); }}
-        
-#pragma warning disable 649
-		static int offsetId;
-		static int offsetWorldX;
-		static int offsetWorldY;
-		static int offsetVisible;
-		static int offsetGeckVisible;
-		static int offsetAutoGarbage;
-		static int offsetGeckCount;
-		static int offsetRadius;
-		static int offsetColor;
-		static int offsetIsNotValid;
-#pragma warning restore 649
+        public virtual UInt32 Id { get { return GetId (thisptr); }}
+        public virtual UInt16 WorldX { get { return GetWorldX (thisptr); } set { SetWorldX (thisptr, value); }}
+        public virtual UInt16 WorldY { get { return GetWorldY (thisptr); } set { SetWorldY (thisptr, value); }}
+        public virtual Boolean Visible { get { return GetVisible (thisptr); } set { SetVisible (thisptr, value); }}
+        public virtual Boolean GeckVisible { get { return GetGeckVisible (thisptr); } set { SetGeckVisible (thisptr, value); }}
+        public virtual Boolean AutoGarbage { get { return GetAutoGarbage (thisptr); } set { SetAutoGarbage (thisptr, value); }}
+        public virtual Int32 GeckCount { get { return GetGeckCount (thisptr); } set { SetGeckCount (thisptr, value); }}
+        public virtual UInt16 Radius { get { return GetRadius (thisptr); } set { SetRadius (thisptr, value); }}
+        public virtual UInt32 Color { get { return GetColor (thisptr); } set { SetColor (thisptr, value); }}
+        public virtual Boolean IsNotValid { get { return GetIsNotValid (thisptr); }}
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetId(IntPtr loc);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetWorldX(IntPtr loc);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetWorldY(IntPtr loc);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static bool GetVisible(IntPtr loc);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static bool GetGeckVisible(IntPtr loc);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static bool GetAutoGarbage(IntPtr loc);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetGeckCount(IntPtr loc);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetRadius(IntPtr loc);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetColor(IntPtr loc);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static bool GetIsNotValid(IntPtr loc);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetWorldX(IntPtr loc, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetWorldY(IntPtr loc, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetVisible(IntPtr loc, bool val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetGeckVisible(IntPtr loc, bool val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAutoGarbage(IntPtr loc, bool val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetGeckCount(IntPtr loc, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetRadius(IntPtr loc, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetColor(IntPtr loc, uint val);
 	}
 }
