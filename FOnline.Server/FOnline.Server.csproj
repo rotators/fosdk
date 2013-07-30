@@ -130,6 +130,7 @@
     <Compile Include="Core\Tests.cs" />
     <Compile Include="Serializator.cs" />
     <Compile Include="EngineTypeExtensions.cs" />
+    <Compile Include="Core\Location.Events.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
