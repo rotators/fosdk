@@ -134,6 +134,7 @@
     <Compile Include="Serializator.cs" />
     <Compile Include="GameType.cs" />
     <Compile Include="EngineTypeExtensions.cs" />
+    <Compile Include="Core\Location.Events.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
