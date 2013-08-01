@@ -64,10 +64,10 @@ namespace FOnline
 
         public event EventHandler<LocationEnterEventArgs> Enter;
         // called by engine
-        bool RaiseEnter (IntPtr group, ushort entrance)
+        bool RaiseEnter (IList<Critter> group, ushort entrance)
         {
             if (Enter != null) {
-                var eventArgs = new LocationEnterEventArgs (this, new CritterArray (group), entrance);
+                var eventArgs = new LocationEnterEventArgs (this, group, entrance);
                 Enter (this, eventArgs);
 
                 if (eventArgs.Prevent)
