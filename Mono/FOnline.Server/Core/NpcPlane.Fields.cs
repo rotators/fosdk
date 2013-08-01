@@ -1,56 +1,217 @@
 using System;
+using System.Runtime.CompilerServices;
 namespace FOnline
 {
     public partial class NpcPlane
     {
-        public virtual PlaneType Type { get { return (PlaneType)NativeFields.GetInt32(thisptr, offsetType); } set { NativeFields.SetInt32(thisptr, offsetType, (Int32)value); }}
-        public virtual UInt32 Priority { get { return NativeFields.GetUInt32(thisptr, offsetPriority); } set { NativeFields.SetUInt32(thisptr, offsetPriority, value); }}
-        public virtual Int32 Identifier { get { return NativeFields.GetInt32(thisptr, offsetIdentifier); } set { NativeFields.SetInt32(thisptr, offsetIdentifier, value); }}
-        public virtual UInt32 IdentifierExt { get { return NativeFields.GetUInt32(thisptr, offsetIdentifierExt); } set { NativeFields.SetUInt32(thisptr, offsetIdentifierExt, value); }}
-        public virtual Boolean Run { get { return NativeFields.GetBoolean(thisptr, offsetRun); } set { NativeFields.SetBoolean(thisptr, offsetRun, value); }}
-        public virtual UInt32 Misc_WaitSecond { get { return NativeFields.GetUInt32(thisptr, offsetMisc_WaitSecond); } set { NativeFields.SetUInt32(thisptr, offsetMisc_WaitSecond, value); }}
-        public virtual Int32 Misc_ScriptId { get { return NativeFields.GetInt32(thisptr, offsetMisc_ScriptId); } set { NativeFields.SetInt32(thisptr, offsetMisc_ScriptId, value); }}
-        public virtual UInt32 Attack_TargId { get { return NativeFields.GetUInt32(thisptr, offsetAttack_TargId); } set { NativeFields.SetUInt32(thisptr, offsetAttack_TargId, value); }}
-        public virtual Int32 Attack_MinHp { get { return NativeFields.GetInt32(thisptr, offsetAttack_MinHp); } set { NativeFields.SetInt32(thisptr, offsetAttack_MinHp, value); }}
-        public virtual Boolean Attack_IsGag { get { return NativeFields.GetBoolean(thisptr, offsetAttack_IsGag); } set { NativeFields.SetBoolean(thisptr, offsetAttack_IsGag, value); }}
-        public virtual UInt16 Attack_GagHexX { get { return NativeFields.GetUInt16(thisptr, offsetAttack_GagHexX); } set { NativeFields.SetUInt16(thisptr, offsetAttack_GagHexX, value); }}
-        public virtual UInt16 Attack_GagHexY { get { return NativeFields.GetUInt16(thisptr, offsetAttack_GagHexY); } set { NativeFields.SetUInt16(thisptr, offsetAttack_GagHexY, value); }}
-        public virtual UInt16 Attack_LastHexX { get { return NativeFields.GetUInt16(thisptr, offsetAttack_LastHexX); } set { NativeFields.SetUInt16(thisptr, offsetAttack_LastHexX, value); }}
-        public virtual UInt16 Attack_LastHexY { get { return NativeFields.GetUInt16(thisptr, offsetAttack_LastHexY); } set { NativeFields.SetUInt16(thisptr, offsetAttack_LastHexY, value); }}
-        public virtual UInt16 Walk_HexX { get { return NativeFields.GetUInt16(thisptr, offsetWalk_HexX); } set { NativeFields.SetUInt16(thisptr, offsetWalk_HexX, value); }}
-        public virtual UInt16 Walk_HexY { get { return NativeFields.GetUInt16(thisptr, offsetWalk_HexY); } set { NativeFields.SetUInt16(thisptr, offsetWalk_HexY, value); }}
-        public virtual Direction Walk_Dir { get { return (Direction)NativeFields.GetByte(thisptr, offsetWalk_Dir); } set { NativeFields.SetByte(thisptr, offsetWalk_Dir, (Byte)value); }}
-        public virtual UInt32 Walk_Cut { get { return NativeFields.GetUInt32(thisptr, offsetWalk_Cut); } set { NativeFields.SetUInt32(thisptr, offsetWalk_Cut, value); }}
-        public virtual UInt16 Pick_HexX { get { return NativeFields.GetUInt16(thisptr, offsetPick_HexX); } set { NativeFields.SetUInt16(thisptr, offsetPick_HexX, value); }}
-        public virtual UInt16 Pick_HexY { get { return NativeFields.GetUInt16(thisptr, offsetPick_HexY); } set { NativeFields.SetUInt16(thisptr, offsetPick_HexY, value); }}
-        public virtual UInt16 Pick_Pid { get { return NativeFields.GetUInt16(thisptr, offsetPick_Pid); } set { NativeFields.SetUInt16(thisptr, offsetPick_Pid, value); }}
-        public virtual UInt32 Pick_UseItemId { get { return NativeFields.GetUInt32(thisptr, offsetPick_UseItemId); } set { NativeFields.SetUInt32(thisptr, offsetPick_UseItemId, value); }}
-        public virtual Boolean Pick_ToOpen { get { return NativeFields.GetBoolean(thisptr, offsetPick_ToOpen); } set { NativeFields.SetBoolean(thisptr, offsetPick_ToOpen, value); }}
+        public virtual PlaneType Type
+        {
+            get { return (PlaneType)GetType_(thisptr); }
+            set { SetType(thisptr, (int)value); }
+        }
+        public virtual UInt32 Priority
+        {
+            get { return GetPriority(thisptr); }
+            set { SetPriority(thisptr, value); }
+        }
+        public virtual Int32 Identifier
+        {
+            get { return GetIdentifier(thisptr); }
+            set { SetIdentifier(thisptr, value); }
+        }
+        public virtual UInt32 IdentifierExt
+        {
+            get { return GetIdentifierExt(thisptr); }
+            set { SetIdentifierExt(thisptr, value); }
+        }
+        public virtual Boolean Run
+        {
+            get { return GetRun(thisptr); }
+            set { SetRun(thisptr, value); }
+        }
+        public virtual UInt32 Misc_WaitSecond
+        {
+            get { return GetMisc_WaitSecond(thisptr); }
+            set { SetMisc_WaitSecond(thisptr, value); }
+        }
+        public virtual Int32 Misc_ScriptId
+        {
+            get { return GetMisc_ScriptId(thisptr); }
+            set { SetMisc_ScriptId(thisptr, value); }
+        }
+        public virtual UInt32 Attack_TargId
+        {
+            get { return GetAttack_TargId(thisptr); }
+            set { SetAttack_TargId(thisptr, value); }
+        }
+        public virtual Int32 Attack_MinHp
+        {
+            get { return GetAttack_MinHp(thisptr); }
+            set { SetAttack_MinHp(thisptr, value); }
+        }
+        public virtual Boolean Attack_IsGag
+        {
+            get { return GetAttack_IsGag(thisptr); }
+            set { SetAttack_IsGag(thisptr, value); }
+        }
+        public virtual UInt16 Attack_GagHexX
+        {
+            get { return GetAttack_GagHexX(thisptr); }
+            set { SetAttack_GagHexX(thisptr, value); }
+        }
+        public virtual UInt16 Attack_GagHexY
+        {
+            get { return GetAttack_GagHexY(thisptr); }
+            set { SetAttack_GagHexY(thisptr, value); }
+        }
+        public virtual UInt16 Attack_LastHexX
+        {
+            get { return GetAttack_LastHexX(thisptr); }
+            set { SetAttack_LastHexX(thisptr, value); }
+        }
+        public virtual UInt16 Attack_LastHexY
+        {
+            get { return GetAttack_LastHexY(thisptr); }
+            set { SetAttack_LastHexY(thisptr, value); }
+        }
+        public virtual UInt16 Walk_HexX
+        {
+            get { return GetWalk_HexX(thisptr); }
+            set { SetWalk_HexX(thisptr, value); }
+        }
+        public virtual UInt16 Walk_HexY
+        {
+            get { return GetWalk_HexY(thisptr); }
+            set { SetWalk_HexY(thisptr, value); }
+        }
+        public virtual Direction Walk_Dir
+        {
+            get { return (Direction)GetWalk_Dir(thisptr); }
+            set { SetWalk_Dir(thisptr, (byte)value); }
+        }
+        public virtual UInt32 Walk_Cut
+        {
+            get { return GetWalk_Cut(thisptr); }
+            set { SetWalk_Cut(thisptr, value); }
+        }
+        public virtual UInt16 Pick_HexX
+        {
+            get { return GetPick_HexX(thisptr); }
+            set { SetPick_HexX(thisptr, value); }
+        }
+        public virtual UInt16 Pick_HexY
+        {
+            get { return GetPick_HexY(thisptr); }
+            set { SetPick_HexY(thisptr, value); }
+        }
+        public virtual UInt16 Pick_Pid
+        {
+            get { return GetPick_Pid(thisptr); }
+            set { SetPick_Pid(thisptr, value); }
+        }
+        public virtual UInt32 Pick_UseItemId
+        {
+            get { return GetPick_UseItemId(thisptr); }
+            set { SetPick_UseItemId(thisptr, value); }
+        }
+        public virtual Boolean Pick_ToOpen
+        {
+            get { return GetPick_ToOpen(thisptr); }
+            set { SetPick_ToOpen(thisptr, value); }
+        }
 
-#pragma warning disable 649
-	    static int offsetType;
-        static int offsetPriority;
-        static int offsetIdentifier;
-        static int offsetIdentifierExt;
-        static int offsetRun;
-        static int offsetMisc_WaitSecond;
-        static int offsetMisc_ScriptId;
-        static int offsetAttack_TargId;
-        static int offsetAttack_MinHp;
-        static int offsetAttack_IsGag;
-        static int offsetAttack_GagHexX;
-        static int offsetAttack_GagHexY;
-        static int offsetAttack_LastHexX;
-        static int offsetAttack_LastHexY;
-        static int offsetWalk_HexX;
-        static int offsetWalk_HexY;
-        static int offsetWalk_Dir;
-        static int offsetWalk_Cut;
-        static int offsetPick_HexX;
-        static int offsetPick_HexY;
-        static int offsetPick_Pid;
-        static int offsetPick_UseItemId;
-        static int offsetPick_ToOpen;
-#pragma warning restore 649
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetType_(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetPriority(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetIdentifier(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetIdentifierExt(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static bool GetRun(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetMisc_WaitSecond(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetMisc_ScriptId(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetAttack_TargId(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static int GetAttack_MinHp(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static bool GetAttack_IsGag(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetAttack_GagHexX(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetAttack_GagHexY(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetAttack_LastHexX(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetAttack_LastHexY(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetWalk_HexX(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetWalk_HexY(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static byte GetWalk_Dir(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetWalk_Cut(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetPick_HexX(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetPick_HexY(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static ushort GetPick_Pid(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static uint GetPick_UseItemId(IntPtr ptr);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static bool GetPick_ToOpen(IntPtr ptr);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetType(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetPriority(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetIdentifier(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetIdentifierExt(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetRun(IntPtr ptr, bool val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetMisc_WaitSecond(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetMisc_ScriptId(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAttack_TargId(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAttack_MinHp(IntPtr ptr, int val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAttack_IsGag(IntPtr ptr, bool val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAttack_GagHexX(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAttack_GagHexY(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAttack_LastHexX(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetAttack_LastHexY(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetWalk_HexX(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetWalk_HexY(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetWalk_Dir(IntPtr ptr, byte val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetWalk_Cut(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetPick_HexX(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetPick_HexY(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetPick_Pid(IntPtr ptr, ushort val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetPick_UseItemId(IntPtr ptr, uint val);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        extern static void SetPick_ToOpen(IntPtr ptr, bool val);
 	}
 }
