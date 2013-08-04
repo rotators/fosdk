@@ -42,18 +42,6 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AngelScript\ScriptContext.cs" />
-    <Compile Include="AngelScript\ScriptContext.NativeMethods.cs" />
-    <Compile Include="AngelScript\ScriptEngine.cs" />
-    <Compile Include="AngelScript\ScriptEngine.NativeMethods.cs" />
-    <Compile Include="AngelScript\ScriptFunction.cs" />
-    <Compile Include="AngelScript\ScriptFunction.NativeMethods.cs" />
-    <Compile Include="AngelScript\ScriptModule.cs" />
-    <Compile Include="AngelScript\ScriptModule.NativeMethods.cs" />
-    <Compile Include="AngelScript\ScriptObject.cs" />
-    <Compile Include="AngelScript\ScriptObject.NativeMethods.cs" />
-    <Compile Include="AngelScript\ScriptObjectType.cs" />
-    <Compile Include="AngelScript\ScriptObjectType.NativeMethods.cs" />
     <Compile Include="CoreUtils.cs" />
     <Compile Include="IManagedWrapper.cs" />
     <Compile Include="Logging.cs" />
