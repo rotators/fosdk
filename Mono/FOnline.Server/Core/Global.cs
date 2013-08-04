@@ -37,14 +37,6 @@ namespace FOnline
         {
             return CritterManager.CreatePlane();
         }
-        public static bool SetParameterGetBehaviour(uint index, Func<IntPtr, uint, int> func)
-        {
-            return CritterManager.SetParameterGetBehaviour(index, func);
-        }
-        public static bool SetParameterGetBehaviour(uint index, string func_name)
-        {
-            return CritterManager.SetParameterGetBehaviour(index, func_name);
-        }
         public static void SetChosenSendParameter(int index, bool enabled)
         {
             CritterManager.SetChosenSendParameter(index, enabled);
