@@ -12,8 +12,6 @@ namespace FOnline
 		void RadioMessageMsg(ushort channel, ushort textMsg, uint strNum);
 		void RadioMessageMsg(ushort channel, ushort textMsg, uint strNum, string lexems);
         uint GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots);
-        bool AddTextListener(Say say_type, string first_str, ushort parameter, string script_name);
-        void EraseTextListener(Say say_type, string first_str, ushort parameter);
         uint GetScriptId(string script_name, string func_decl);
         string GetScriptName(uint script_id);
     }
@@ -56,24 +54,6 @@ namespace FOnline
         public uint GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots)
         {
             return Global_GetBagItems(bag_id, pids, min_counts, max_counts, slots);
-        }
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Global_AddTextListener(int say_type, string first_str, ushort parameter, string script_name);
-        public bool AddTextListener(Say say_type, string first_str, ushort parameter, string script_name)
-        {
-            if (first_str == null)
-                throw new ArgumentNullException ("first_str");
-            if (script_name == null)
-                throw new ArgumentNullException ("script_name");
-            return Global_AddTextListener((int)say_type, first_str, parameter, CoreUtils.ParseFuncName(script_name));
-        }
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Global_EraseTextListener(int say_type, string first_str, ushort parameter);
-        public void EraseTextListener(Say say_type, string first_str, ushort parameter)
-        {
-            if (first_str == null)
-                throw new ArgumentNullException ("first_str");
-            Global_EraseTextListener((int)say_type, first_str, parameter);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint Global_GetScriptId(string script_name, string func_decl);
