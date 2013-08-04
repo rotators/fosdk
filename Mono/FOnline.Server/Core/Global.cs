@@ -587,14 +587,6 @@ namespace FOnline
             var res = Misc.GetBagItems(bag_id, pids, min_counts, max_counts, slots);
             return res;
         }
-        public static bool AddTextListener(Say say_type, string first_str, ushort parameter, string script_name)
-        {
-            return Misc.AddTextListener(say_type, first_str, parameter, script_name);
-        }
-        public static void EraseTextListener(Say say_type, string first_str, ushort parameter)
-        {
-            Misc.EraseTextListener(say_type, first_str, parameter);
-        }
 		#endregion
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Global_GC();
