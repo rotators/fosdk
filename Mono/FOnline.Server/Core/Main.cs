@@ -93,20 +93,6 @@ namespace FOnline
             this.Npc = Npc;
         }
     }
-    public class ItemsCraftedEventArgs : EventArgs
-    {
-        public IList<Item> Items { get; private set; }
-        public IList<uint> ItemsCount { get; private set; }
-        public IList<Item> Resources { get; private set; }
-        public Critter Crafter { get; private set; }
-        public ItemsCraftedEventArgs(IList<Item> items, IList<uint> items_count, IList<Item> resources, Critter crafter)
-        {
-            this.Items = items;
-            this.ItemsCount = items_count;
-            this.Resources = resources;
-            this.Crafter = crafter;
-        }
-    }
     public class GlobalProcessEventArgs : EventArgs
     {
         public float X { get; set; }
@@ -443,18 +429,6 @@ namespace FOnline
                 ItemsBarter(null, e);
             }
             return e != null ? e.Success : ItemsBarterEventArgs.Default;
-        }
-        /// <summary>
-        /// Raised after items are crafted.
-        /// </summary>
-        public static event EventHandler<ItemsCraftedEventArgs> ItemsCrafted;
-        // called by engine
-        static void RaiseItemsCrafted(IList<Item> items, IList<uint> items_count, IList<Item> resources, Critter crafter)
-        {
-            if (ItemsCrafted != null)
-            {
-                ItemsCrafted(null, new ItemsCraftedEventArgs(items, items_count, resources, crafter));
-            }
         }
         /// <summary>
         /// Raised when group moves on worldmap.

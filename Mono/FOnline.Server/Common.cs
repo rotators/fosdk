@@ -16,7 +16,6 @@ namespace FOnline
         public const ushort Combat = 5;
         public const ushort Quest = 6;
         public const ushort Holo = 7;
-        public const ushort Craft = 8;
         public const ushort Internal = 9;
         public static uint DlgStr(uint dialog_id, uint str_num) // TODO: good place for this?
         {
