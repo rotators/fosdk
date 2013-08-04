@@ -45,14 +45,6 @@ namespace FOnline
         {
             return CritterManager.SetParameterGetBehaviour(index, func_name);
         }
-        public static bool SetParameterChangeBehaviour(uint index, Action<IntPtr, uint, int> func)
-        {
-            return CritterManager.SetParameterChangeBehaviour(index, func);
-        }
-        public static bool SetParameterChangeBehaviour(uint index, string func_name)
-        {
-            return CritterManager.SetParameterChangeBehaviour(index, func_name);
-        }
         public static void SetChosenSendParameter(int index, bool enabled)
         {
             CritterManager.SetChosenSendParameter(index, enabled);

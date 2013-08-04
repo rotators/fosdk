@@ -14,8 +14,6 @@ namespace FOnline
         NpcPlane CreatePlane();
         bool SetParameterGetBehaviour(uint index, Func<IntPtr, uint, int> func);
         bool SetParameterGetBehaviour(uint index, string func_name);
-        bool SetParameterChangeBehaviour(uint index, Action<IntPtr, uint, int> func);
-        bool SetParameterChangeBehaviour(uint index, string func_name);
         void SetRegistrationParameter(uint index, bool enabled);
         void SetChosenSendParameter(int index, bool enabled);
         void SetSendParameter(int index, bool enabled);
@@ -70,20 +68,6 @@ namespace FOnline
             if (func_name == null)
                 throw new ArgumentNullException ("func_name");
             return Global_SetParameterGetBehaviour(index, CoreUtils.ParseFuncName(func_name));
-        }
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Global_SetParameterChangeBehaviour(uint index, string func_name);
-        public bool SetParameterChangeBehaviour(uint index, Action<IntPtr, uint, int> func)
-        {
-            var method = func.Method;
-            return Global_SetParameterChangeBehaviour(index,
-                CoreUtils.ParseFuncName(method.DeclaringType.FullName + "::" + method.Name));
-        }
-        public bool SetParameterChangeBehaviour(uint index, string func_name)
-        {
-            if (func_name == null)
-                throw new ArgumentNullException ("func_name");
-            return Global_SetParameterChangeBehaviour(index, CoreUtils.ParseFuncName(func_name));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Global_SetRegistrationParam(uint index, bool enabled);
