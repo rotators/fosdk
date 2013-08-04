@@ -627,12 +627,6 @@ namespace FOnline
         extern static void Cl_ShowContainer(IntPtr thisptr, IntPtr cont_cr, IntPtr cont_item, uint transfer_type);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Cl_ShowScreen(IntPtr thisptr, int screen_type, uint param, string func_name);
-        public virtual void ShowScreen(Screen screen_type, uint param, string func_name)
-        {
-            Cl_ShowScreen(thisptr, (int)screen_type, param, func_name);
-        }
-        [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Cl_RunClientScript(IntPtr thisptr, string func_name, int p0, int p1, int p2, string p3, int[] p4);
         public virtual void RunClientScript(string func_name, int p0, int p1, int p2, string p3, int[] p4)
         {
