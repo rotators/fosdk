@@ -45,10 +45,6 @@ namespace FOnline
         {
             CritterManager.SetSendParameter(index, enabled);
         }
-        public static void SetSendParameter(int index, bool enabled, string allow_func)
-        {
-            CritterManager.SetSendParameter(index, enabled, allow_func);
-        }
         public static void SetRegistrationParameter(uint index, bool enabled)
         {
             CritterManager.SetRegistrationParameter(index, enabled);

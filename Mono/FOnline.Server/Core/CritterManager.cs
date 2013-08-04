@@ -15,7 +15,6 @@ namespace FOnline
         void SetRegistrationParameter(uint index, bool enabled);
         void SetChosenSendParameter(int index, bool enabled);
         void SetSendParameter(int index, bool enabled);
-        void SetSendParameter(int index, bool enabled, string allow_func);
         bool IsCritterCanWalk(uint cr_type);
         bool IsCritterCanRun(uint cr_type);
         bool IsCritterCanAim(uint cr_type);
@@ -113,12 +112,6 @@ namespace FOnline
         public void SetSendParameter(int index, bool enabled)
         {
             Global_SetSendParameter(index, enabled);
-        }
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void Global_SetSendParameterFunc(int index, bool enabled, string allow_func);
-        public void SetSendParameter(int index, bool enabled, string allow_func)
-        {
-            Global_SetSendParameterFunc(index, enabled, CoreUtils.ParseFuncName(allow_func));
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static bool Global_SwapCritters(IntPtr cr1, IntPtr cr2, bool with_inv, bool with_vars);
