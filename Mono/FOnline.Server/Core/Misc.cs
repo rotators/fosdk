@@ -12,8 +12,6 @@ namespace FOnline
 		void RadioMessageMsg(ushort channel, ushort textMsg, uint strNum);
 		void RadioMessageMsg(ushort channel, ushort textMsg, uint strNum, string lexems);
         uint GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots);
-        uint GetScriptId(string script_name, string func_decl);
-        string GetScriptName(uint script_id);
     }
 	public class Misc : IMisc
 	{
@@ -54,18 +52,6 @@ namespace FOnline
         public uint GetBagItems(uint bag_id, IList<ushort> pids, IList<uint> min_counts, IList<uint> max_counts, IList<ItemSlot> slots)
         {
             return Global_GetBagItems(bag_id, pids, min_counts, max_counts, slots);
-        }
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Global_GetScriptId(string script_name, string func_decl);
-        public uint GetScriptId(string script_name, string func_decl)
-        {
-            return Global_GetScriptId(script_name, func_decl);
-        }
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static string Global_GetScriptName(uint script_id);
-        public string GetScriptName(uint script_id)
-        {
-            return Global_GetScriptName(script_id);
         }
     }
 }

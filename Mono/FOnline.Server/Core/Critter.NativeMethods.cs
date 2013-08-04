@@ -648,16 +648,6 @@ namespace FOnline
             return Crit_SetScript(thisptr, script);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Crit_GetScriptId(IntPtr thisptr);
-        public virtual uint GetScriptId()
-        {
-            return Crit_GetScriptId(thisptr);
-        }
-        public virtual uint ScriptId
-        {
-            get { return Crit_GetScriptId(thisptr); }
-        }
-        [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Crit_SetBagRefreshTime(IntPtr thisptr, uint real_minutes);
         public virtual void SetBagRefreshTime(uint real_minutes)
         {

@@ -47,17 +47,6 @@ namespace FOnline
             return Map_SetScript(thisptr, script);
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Map_GetScriptId(IntPtr thisptr);
-        public virtual uint GetScriptId()
-        {
-            return Map_GetScriptId(thisptr);
-        }
-        public virtual uint ScriptId
-        {
-            get { return Map_GetScriptId(thisptr); }
-        }
-
-        [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void Map_SetLoopTime(IntPtr thisptr, uint num_loop, uint ms);
         public virtual void SetLoopTime(uint num_loop, uint ms)
         {

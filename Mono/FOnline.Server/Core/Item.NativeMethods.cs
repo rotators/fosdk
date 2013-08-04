@@ -25,11 +25,6 @@ namespace FOnline
             get { return Item_IsDeteriorable(thisptr); }
         }
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static bool Item_SetScript(IntPtr thisptr, IntPtr script);
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static uint Item_GetScriptId(IntPtr thisptr);
-        
-        [MethodImpl(MethodImplOptions.InternalCall)]
         extern static byte Item_GetType(IntPtr thisptr);
         public new virtual byte GetType()
         {

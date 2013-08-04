@@ -34,11 +34,6 @@ namespace FOnline
             get { return GetMisc_WaitSecond(thisptr); }
             set { SetMisc_WaitSecond(thisptr, value); }
         }
-        public virtual Int32 Misc_ScriptId
-        {
-            get { return GetMisc_ScriptId(thisptr); }
-            set { SetMisc_ScriptId(thisptr, value); }
-        }
         public virtual UInt32 Attack_TargId
         {
             get { return GetAttack_TargId(thisptr); }
@@ -133,8 +128,6 @@ namespace FOnline
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint GetMisc_WaitSecond(IntPtr ptr);
         [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static int GetMisc_ScriptId(IntPtr ptr);
-        [MethodImpl(MethodImplOptions.InternalCall)]
         extern static uint GetAttack_TargId(IntPtr ptr);
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static int GetAttack_MinHp(IntPtr ptr);
@@ -179,8 +172,6 @@ namespace FOnline
         extern static void SetRun(IntPtr ptr, bool val);
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void SetMisc_WaitSecond(IntPtr ptr, uint val);
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        extern static void SetMisc_ScriptId(IntPtr ptr, int val);
         [MethodImpl(MethodImplOptions.InternalCall)]
         extern static void SetAttack_TargId(IntPtr ptr, uint val);
         [MethodImpl(MethodImplOptions.InternalCall)]
