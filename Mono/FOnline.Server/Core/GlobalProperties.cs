@@ -9,9 +9,6 @@ namespace FOnline
 {
     public interface IGlobalProperties
     {
-		//
-		// Shared (for AS and mono)
-		//
 	    ushort Year { get; }
 	    ushort Month { get; }
 	    ushort Day { get; }
@@ -163,24 +160,7 @@ namespace FOnline
 		public string Name { get; set;	}
 	}
     public class GlobalProperties : IGlobalProperties
-    {
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		extern static IntPtr GetGlobalPropertyAddress(string name);
-		
-		public static void Init()
-		{
-			foreach(var field in typeof(GlobalProperties).GetFields (BindingFlags.NonPublic | BindingFlags.Static).Where (f => f.Name.StartsWith("ptr")))
-			{
-				string property_name;
-				var attr = field.GetCustomAttributes(false).FirstOrDefault (a => a.GetType() == typeof(GlobalPropertyAddressAttribute));
-				if(attr == null)
-					property_name = "__" + field.Name.Substring(3);
-				else
-					property_name = (attr as GlobalPropertyAddressAttribute).Name;
-				field.SetValue(null, GetGlobalPropertyAddress(property_name));
-			}
-		}
-		
+    {	
 #pragma warning disable 649
 		static IntPtr ptrYear;
 		public ushort Year

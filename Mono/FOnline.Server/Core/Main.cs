@@ -154,21 +154,6 @@ namespace FOnline
     public static class Main
     {
         /// <summary>
-        /// Special method, called when engine is ready to serve info about game object field offsets.
-        /// </summary>
-        static void InitFieldOffsets()
-        {
-            NativeFields.InitFieldOffsets(typeof(Critter));
-            NativeFields.InitFieldOffsets(typeof(Item));
-            NativeFields.InitFieldOffsets(typeof(Location));
-            NativeFields.InitFieldOffsets(typeof(Map));
-            NativeFields.InitFieldOffsets(typeof(NpcPlane));
-            NativeFields.InitFieldOffsets(typeof(ProtoItem));
-            NativeFields.InitFieldOffsets(typeof(Scenery));
-            GlobalProperties.Init();
-        }
-
-        /// <summary>
         /// Raised before world generation.
         /// </summary>
         public static event EventHandler Init;

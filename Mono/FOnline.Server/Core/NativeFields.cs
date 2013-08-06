@@ -9,24 +9,6 @@ namespace FOnline
 {
     static class NativeFields
     {
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		extern static int GetFieldOffset(string typename, string fieldname);
-		
-		/// <summary>
-		/// Iterates over all fields with prefix offset
-		/// and set them the native type field offsets.
-		/// </summary>
-		/// <param name='type'>
-		/// Type.
-		/// </param>
-		public static void InitFieldOffsets(Type type)
-		{
-			foreach(var fi in type.GetFields(BindingFlags.Static | BindingFlags.NonPublic).Where (f => f.Name.StartsWith("offset")))
-			{
-				fi.SetValue(null, GetFieldOffset(type.Name, fi.Name.Substring(6)));
-			}
-		}
-		
         public static IntPtr GetIntPtr(IntPtr ptr, int offset)
         {
             unsafe
