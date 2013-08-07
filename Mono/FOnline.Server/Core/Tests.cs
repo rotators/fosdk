@@ -2,7 +2,7 @@ using System;
 using FOnline;
 using Microsoft.CSharp.RuntimeBinder;
 
-namespace FOnline
+namespace FOnline.Server
 {
     public static class Tests
     {

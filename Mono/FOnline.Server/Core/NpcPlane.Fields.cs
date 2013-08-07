@@ -1,6 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
-namespace FOnline
+namespace FOnline.Server
 {
     public partial class NpcPlane
     {

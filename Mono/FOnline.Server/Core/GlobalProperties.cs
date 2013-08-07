@@ -5,7 +5,7 @@ using System.Text;
 using System.Runtime.CompilerServices;
 using System.Reflection;
 
-namespace FOnline
+namespace FOnline.Server
 {
     public interface IGlobalProperties
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.CompilerServices;
 
-namespace FOnline
+namespace FOnline.Server
 {
     public partial class Item
     {

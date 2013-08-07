@@ -98,7 +98,6 @@
     <Compile Include="Core\NpcPlanes.cs" />
     <Compile Include="Core\Random.cs" />
     <Compile Include="Core\TimeEvents.cs" />
-    <Compile Include="Core\EventArgs.cs" />
     <Compile Include="Core\GameVar.cs" />
     <Compile Include="Core\Global.cs" />
     <Compile Include="Core\Item.cs" />

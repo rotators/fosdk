@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FOnline
+namespace FOnline.Server
 {
     public class GameTypeEventArgs : EventArgs
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FOnline
+namespace FOnline.Server
 {
     public partial class Critter : IManagedWrapper, IGameTypeHandling
     {

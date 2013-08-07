@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FOnline
+namespace FOnline.Server
 {
     /// <summary>
     /// Set of extension methods for Critter class helping to create AI plans.

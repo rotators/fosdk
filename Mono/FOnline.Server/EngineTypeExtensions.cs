@@ -1,6 +1,6 @@
 using System;
 
-namespace FOnline
+namespace FOnline.Server
 {
     public static class EngineTypeExtensions
     {

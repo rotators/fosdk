@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Reflection;
-using main = FOnline.Main;
+using main = FOnline.Server.Main;
 using System.Threading;
 using System.Runtime.CompilerServices;
 
-namespace FOnline
+namespace FOnline.Server
 {
     class Program
     {
